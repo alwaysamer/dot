@@ -1,0 +1,28 @@
+vim.cmd [[syntax on]]
+vim.cmd [[set termguicolors]]
+vim.cmd [[hi LineNr ctermbg=NONE guibg=NONE]]
+vim.cmd [[set number]]
+vim.cmd [[set hidden]]
+vim.cmd [[set signcolumn=no]]
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_italic_functions = false
+vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[set showtabline=2]]
+vim.cmd [[set laststatus=0]]
+vim.cmd [[set noswapfile]]
+vim.cmd [[set noshowmode]]
+vim.cmd [[set cmdheight=1]]
+vim.cmd [[set tabstop=2]]
+vim.cmd [[set softtabstop=-1]]
+vim.cmd [[set noruler]]
+vim.cmd [[set shiftwidth=0]]
+vim.cmd [[set shiftround]]
+vim.cmd [[set expandtab]]
+vim.cmd [[set autoindent]]
+vim.cmd [[set completeopt=menu,menuone,noselect]]
+vim.cmd [[filetype plugin indent on]]
+vim.cmd [[filetype plugin indent on]]
+vim.cmd [[set ttyfast]]
+vim.cmd [[set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾]]
+
