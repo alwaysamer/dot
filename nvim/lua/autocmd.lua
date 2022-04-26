@@ -1,7 +1,0 @@
-vim.cmd [[autocmd BufWritePre *.cpp lua vim.lsp.buf.formatting_sync(nil,100)]]
-vim.cmd [[autocmd BufWritePre *.h lua vim.lsp.buf.formatting_sync(nil,100)]]
-vim.cmd [[autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)]]
-vim.cmd [[autocmd BufWritePre *.cs lua vim.lsp.buf.formatting_sync(nil, 100)]]
-vim.cmd [[autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 100)]]
-vim.cmd [[autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc]]
-vim.cmd [[autocmd FileType alpha set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2]]
