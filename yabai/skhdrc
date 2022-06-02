@@ -10,6 +10,14 @@ cmd + shift - k               : yabai -m window --warp south
 cmd + shift - j               : yabai -m window --warp north
 cmd + shift - l               : yabai -m window --warp east
 
+# Focus monitor
+ctrl + alt - i                : yabai -m display --focus prev
+ctrl + alt - o                : yabai -m display --focus next
+
+# Send Window to Monitor and follow Focus
+ctrl + cmd - i                : yabai -m window --display prev; yabai -m display --focus prev
+ctrl + cmd - o                : yabai -m window --display next; yabai -m display --focus next
+
 # Resize Windows
 lctrl + alt - h               : yabai -m window --resize left:-50:0; \
                                 yabai -m window --resize right:-50:0

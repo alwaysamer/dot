@@ -25,4 +25,4 @@ vim.cmd [[filetype plugin indent on]]
 vim.cmd [[filetype plugin indent on]]
 vim.cmd [[set ttyfast]]
 vim.cmd [[set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾]]
-
+vim.g.code_action_menu_show_details = false
