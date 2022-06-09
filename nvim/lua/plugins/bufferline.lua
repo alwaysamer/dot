@@ -1,33 +1,30 @@
-require('bufferline').setup {
-  options = {
-    mode = "buffers", 
-    numbers = "none",
-    close_command = "bdelete! %d",
-    indicator_icon = '',
-    buffer_close_icon = '',
-    modified_icon = '●',
-    close_icon = '',
-    left_trunc_marker = '',
-    right_trunc_marker = '',
-    max_name_length = 18,
-    max_prefix_length = 15, 
-    tab_size = 18,
-    diagnostics = "nvim_lsp",
-    diagnostics_update_in_insert = false,
-    diagnostics_indicator = function(count, level, diagnostics_dict, context)
-      return "("..count..")"
-    end,
-    offsets = {{filetype = "NvimTree"}},
-    color_icons = true,
-    show_buffer_icons = true,
-    show_buffer_close_icons = false,
-    show_buffer_default_icon = true,
-    show_close_icon = false,
-    show_tab_indicators = true,
-    persist_buffer_sort = true,    
-    separator_style = "thin",
-    enforce_regular_tabs = false,
-    always_show_bufferline = true
+require('bufferline').setup({
+    options = {
+      view = "multiwindow",
+      numbers = "ordinal",
+      number = "superscript",
+      modified_icon = '●',
+      left_trunc_marker = '',
+      right_trunc_marker = '',
+      max_name_length = 18,
+      max_prefix_length = 25, -- prefix used when a buffer is deduplicated
+      tab_size = 25,
+      diagnostics ="nvim_lsp",
+      -- indicator_icon = '▎',
+      -- buffer_close_icon = '',
+      -- modified_icon = '●',
+      -- close_icon = '',
+      -- left_trunc_marker = '',
+      -- right_trunc_marker = '',
+      -- close_icon = '',
+      -- buffer_close_icon = '',
+      show_buffer_close_icons = false,
+      show_close_icon = false,
+      offsets = {{filetype = "NvimTree", text="File Explorer" }},
+      diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        local icon = level:match("error") and " " or " "
+        return " " .. icon .. count
+        end,
+      separator_style = "thin",
     }
-}
-
+  })
