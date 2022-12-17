@@ -22,7 +22,6 @@ Plug('nvim-treesitter/nvim-treesitter', {['do']='TSUpdate'})
 Plug('akinsho/bufferline.nvim')
 Plug('tami5/lspsaga.nvim')
 Plug('voldikss/vim-floaterm')
-Plug('thecodinglab/nvim-vlang')
 vim.call('plug#end')
 
 require('plugins.alpha')
