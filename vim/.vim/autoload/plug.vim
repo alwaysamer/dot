@@ -1,0 +1,1 @@
+/home/amer/dot/vim/.vim/autoload/plug.vim
