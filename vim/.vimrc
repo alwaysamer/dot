@@ -2,7 +2,7 @@
 call plug#begin('~/.local/share/vim/plugins')
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   Plug 'ghifarit53/tokyonight-vim'
-  Plug 'tpope/vim-fugitive'
+  Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " Default Vim Config
