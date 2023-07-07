@@ -16,6 +16,7 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'
   Plug 'vimwiki/vimwiki'
   Plug 'huyvohcmc/atlas.vim'
+  Plug 'andreasvc/vim-256noir'
 call plug#end()
 
 set nocompatible
