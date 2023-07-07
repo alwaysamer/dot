@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/amer/source/dot/.git'
 let g:netrw_dirhist_1='/Users/amer/source/telme.backend'
 let g:netrw_dirhist_0='/Users/amer'
 let g:netrw_dirhist_9='/Users/amer/source/demo'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_6='/Users/amer/source/demo/priv'
 let g:netrw_dirhist_5='/Users/amer/source/demo'
 let g:netrw_dirhist_4='/Users/amer/source/demo/test'
 let g:netrw_dirhist_3='/Users/amer/source/demo'
-let g:netrw_dirhist_2='/Users/amer/source/demo/lib/demo'
