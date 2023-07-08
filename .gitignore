@@ -3,4 +3,4 @@ nvim/plugged
 **/plugged
 **/autoload
 plugin/packer_compiled.lua
-
+nvim/plugin
