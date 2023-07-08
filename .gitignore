@@ -2,3 +2,5 @@ nvim/plugged
 **/.DS_Store
 **/plugged
 **/autoload
+plugin/packer_compiled.lua
+
