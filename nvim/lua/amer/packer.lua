@@ -20,12 +20,17 @@ vim.cmd([[
 local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    use { 
-        "catppuccin/nvim", 
-        as = "catppuccin",
-        config = function()
-            vim.cmd('colorscheme catppuccin-mocha')
+
+    use {
+        'lunarvim/horizon.nvim',
+        config = function ()
+            vim.cmd('colorscheme horizon')
         end
+    }
+
+    use {
+         'nvim-lualine/lualine.nvim',
+         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
