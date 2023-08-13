@@ -33,7 +33,9 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme horizon')
         end
     }
-
+    use {
+         "ahmedkhalf/project.nvim",
+    }
     use {
          'nvim-lualine/lualine.nvim',
          requires = { 'nvim-tree/nvim-web-devicons', opt = true }
