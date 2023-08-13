@@ -33,6 +33,10 @@ return require('packer').startup(function(use)
          requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
     use {
+        "nvim-neorg/neorg",
+        run = ":Neorg sync-parsers",
+    }
+    use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
