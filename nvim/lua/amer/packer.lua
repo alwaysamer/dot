@@ -20,8 +20,8 @@ vim.cmd([[
 local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
-    use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+    use 'nvim-tree/nvim-web-devicons'
+    use 'lewis6991/gitsigns.nvim'
     use 'romgrk/barbar.nvim'
     use {
         'goolord/alpha-nvim',
@@ -56,7 +56,6 @@ return require('packer').startup(function(use)
             ts_update()
         end,
     }
-    use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use {
       'nvim-tree/nvim-tree.lua',
