@@ -2,6 +2,13 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>")
 
+vim.keymap.set("n", "<c-i>", ":BufferPrevious<CR>")
+vim.keymap.set("n", "<c-o>", ":BufferNext<CR>")
+vim.keymap.set("n", "<leader>q", ":BufferClose<CR>")
+
+vim.keymap.set("n", "<leader>nn", ":Neorg index<CR>")
+vim.keymap.set("n", "<leader>nj", ":Neorg journal today<CR>")
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 

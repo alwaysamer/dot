@@ -12,7 +12,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost packer.lua source <afile> | PackerCompile
   augroup end
 ]])
 
@@ -83,7 +83,6 @@ return require('packer').startup(function(use)
         {'L3MON4D3/LuaSnip'},     -- Required
     }
 }
-
 
     if packer_bootstrap then
         require('packer').sync()
