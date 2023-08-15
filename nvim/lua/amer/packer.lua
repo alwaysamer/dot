@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'nvim-tree/nvim-web-devicons'
     use 'lewis6991/gitsigns.nvim'
+    use "numToStr/FTerm.nvim"
     use 'romgrk/barbar.nvim'
     use {
         'goolord/alpha-nvim',

@@ -6,6 +6,9 @@ vim.keymap.set("n", "<c-i>", ":BufferPrevious<CR>")
 vim.keymap.set("n", "<c-o>", ":BufferNext<CR>")
 vim.keymap.set("n", "<leader>q", ":BufferClose<CR>")
 
+vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+
 vim.keymap.set("n", "<leader>nn", ":Neorg index<CR>")
 vim.keymap.set("n", "<leader>nj", ":Neorg journal today<CR>")
 
@@ -24,12 +27,12 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
-vim.keymap.set("n", "<leader>d" , "\"_d")
-vim.keymap.set("v", "<leader>d" , "\"_d")
+vim.keymap.set("n", "<leader>d", "\"_d")
+vim.keymap.set("v", "<leader>d", "\"_d")
 
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<leader>f", function ()
+vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
 end)
 
