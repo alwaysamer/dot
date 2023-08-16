@@ -87,6 +87,9 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' }, -- Required
         }
     }
+    use 'mrjones2014/legendary.nvim'
+    use {'stevearc/dressing.nvim'}
+
 
     if packer_bootstrap then
         require('packer').sync()

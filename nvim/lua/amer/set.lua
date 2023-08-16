@@ -1,5 +1,6 @@
 vim.opt.guicursor = ""
 vim.g.maplocalleader = ";"
+vim.g.mapleader = " "
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
