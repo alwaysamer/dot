@@ -12,7 +12,6 @@ require('legendary').setup({
         {'<C-i>', ":BufferPrevious<CR>", description = "Previous Tab"},
         {'<C-o>', ":BufferNext<CR>", description = "Next Tab"},
         {'<leader>q', ":BufferClose<CR>", description = "Close Tab"},
-        {'<A-i>', n = '<CMD>lua require("FTerm").toggle()<CR>',t = '<CMD>lua require("FTerm").toggle()<CR>',description = "Toggle Terminal"},
         {'<leader>nn', ':Neorg index<CR>', description = "Neorg Open Index"},
         {'<leader>nj', ':Neorg journal today<CR>', description = "Neorg Open Today's Journal"},
         {'J', v = ":m '>+1<CR>gv=gv", description = "Move Highlighted Down"},
