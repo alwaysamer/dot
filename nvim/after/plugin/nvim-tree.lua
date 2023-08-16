@@ -60,7 +60,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     renderer = {
         add_trailing = false,
         group_empty = false,
-        highlight_git = false,
+        highlight_git = true,
         full_name = false,
         highlight_opened_files = "none",
         highlight_modified = "none",
