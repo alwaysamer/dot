@@ -24,6 +24,7 @@ return require('packer').startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'romgrk/barbar.nvim'
     use "numToStr/FTerm.nvim"
+    use "windwp/nvim-autopairs"
     use {
         'goolord/alpha-nvim',
         requires = { 'nvim-tree/nvim-web-devicons' },
