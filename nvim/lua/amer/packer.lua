@@ -23,8 +23,14 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
     use 'lewis6991/gitsigns.nvim'
     use 'romgrk/barbar.nvim'
+    use "numToStr/FTerm.nvim"
     use {
         'goolord/alpha-nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' },
+    }
+
+    use {
+        'folke/trouble.nvim',
         requires = { 'nvim-tree/nvim-web-devicons' },
     }
     use {

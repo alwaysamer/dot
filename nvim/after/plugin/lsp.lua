@@ -8,6 +8,7 @@ lsp.ensure_installed({
 	'lua_ls',
     'gopls',
 	'rust_analyzer',
+    'omnisharp',
 })
 
 lsp.configure('lua_ls', {
