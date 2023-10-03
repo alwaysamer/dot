@@ -16,5 +16,4 @@ export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 fpath=($fpath "/Users/amer/.zfunctions")
-
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"

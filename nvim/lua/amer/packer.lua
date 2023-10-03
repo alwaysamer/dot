@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
     use 'romgrk/barbar.nvim'
     use "numToStr/FTerm.nvim"
     use "windwp/nvim-autopairs"
+    use 'andweeb/presence.nvim'
     use {
         'goolord/alpha-nvim',
         requires = { 'nvim-tree/nvim-web-devicons' },
