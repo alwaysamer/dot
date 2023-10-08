@@ -6,7 +6,7 @@ export ZSH="/Users/amer/.oh-my-zsh"
 export TERM=xterm-256color
 ZSH_THEME="daivasmara"
 plugins=(git zsh-autosuggestions tmux)
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=false
 source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
