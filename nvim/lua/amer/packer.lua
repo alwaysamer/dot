@@ -16,25 +16,19 @@ vim.cmd([[
   augroup end
 ]])
 
-
 local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'nvim-tree/nvim-web-devicons'
     use 'lewis6991/gitsigns.nvim'
     use 'romgrk/barbar.nvim'
-    use "numToStr/FTerm.nvim"
+    use 'github/copilot.vim'
     use "windwp/nvim-autopairs"
-    use 'andweeb/presence.nvim'
     use {
         'goolord/alpha-nvim',
         requires = { 'nvim-tree/nvim-web-devicons' },
     }
 
-    use {
-        'folke/trouble.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons' },
-    }
     use {
         'lunarvim/horizon.nvim',
         config = function()
@@ -69,10 +63,6 @@ return require('packer').startup(function(use)
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional
         },
-    }
-    use {
-        "cbochs/grapple.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
     }
     use {
         'VonHeikemen/lsp-zero.nvim',
