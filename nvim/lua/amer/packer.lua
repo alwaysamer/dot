@@ -43,10 +43,6 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
     use {
-        "nvim-neorg/neorg",
-        run = ":Neorg sync-parsers",
-    }
-    use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -61,33 +57,61 @@ return require('packer').startup(function(use)
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
-            'nvim-tree/nvim-web-devicons', -- optional
+            'nvim-tree/nvim-web-devicons',
         },
     }
+    use 'NeoGitOrg/neogit'
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {                          -- Optional
+            { 'neovim/nvim-lspconfig' },
+            {
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.cmd, 'MasonUpdate')
                 end,
             },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+            { 'williamboman/mason-lspconfig.nvim' },
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' }, -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' }, -- Required
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'L3MON4D3/LuaSnip' },
         }
     }
     use 'mrjones2014/legendary.nvim'
     use {'stevearc/dressing.nvim'}
+    use{
+        "epwalsh/obsidian.nvim",
+        tag = "*",
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    }
+    use{
+        "folke/todo-comments.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    }
+    use({
+         "epwalsh/pomo.nvim",
+         tag = "*",
+         requires = {
+            "rcarriga/nvim-notify",
+        },
+    })
 
-
+    use({
+         "folke/noice.nvim",
+         requires = {
+            "rcarriga/nvim-notify",
+            "MunifTanjim/nui.nvim"
+        },
+    })
+    use "numToStr/Comment.nvim"
+    use "lukas-reineke/indent-blankline.nvim"
+    use "otavioschwanck/arrow.nvim"
     if packer_bootstrap then
         require('packer').sync()
     end
