@@ -3,4 +3,5 @@ nvim/plugged
 **/plugged
 **/autoload
 plugin/packer_compiled.lua
+nvim/lazy-lock.json
 nvim/plugin
