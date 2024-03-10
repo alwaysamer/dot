@@ -8,7 +8,7 @@ require("notify").setup(
       TRACE = "✎",
       WARN = ""
     },
-    level = 3,
+    level = 1,
     minimum_width = 30,
     render = "compact",
     stages = "fade_in_slide_out",

@@ -82,18 +82,17 @@ return require('packer').startup(function(use)
     use 'mrjones2014/legendary.nvim'
     use {'stevearc/dressing.nvim'}
     use{
-        "epwalsh/obsidian.nvim",
-        tag = "*",
-        requires = {
-            "nvim-lua/plenary.nvim",
-        },
-    }
-    use{
         "folke/todo-comments.nvim",
         requires = {
             "nvim-lua/plenary.nvim",
         },
     }
+    use {
+        "nvim-neorg/neorg",
+        run = ":Neorg sync-parsers",
+        requires = "nvim-lua/plenary.nvim",
+    }
+    use "folke/zen-mode.nvim"
     use({
          "epwalsh/pomo.nvim",
          tag = "*",

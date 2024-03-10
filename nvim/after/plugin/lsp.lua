@@ -12,6 +12,8 @@ lsp.ensure_installed({
     'pylsp',
 })
 
+lsp.setup_servers({'dartls', force = true})
+
 lsp.configure('lua_ls', {
     settings = {
         Lua = {
