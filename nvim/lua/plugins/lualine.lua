@@ -8,7 +8,7 @@ return {
                 theme = 'horizon',
                 component_separators = { left = '', right = ''},
                 section_separators = { left = '', right = ''},
-                disabled_filetypes = { 'packer', 'alpha', 'NvimTree' },
+                disabled_filetypes = { 'alpha', 'NvimTree' },
                 ignore_focus = {},
                 always_divide_middle = true,
                 globalstatus = false,
@@ -52,7 +52,6 @@ return {
             tabline = {},
             winbar = {},
             inactive_winbar = {},
-            extensions= { 'trouble' }
         }
 
     end

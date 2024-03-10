@@ -24,10 +24,10 @@ return {
 	              'tsserver',
 	              'eslint',
 	              'lua_ls',
-                'gopls',
+                  'gopls',
 	              'rust_analyzer',
-                'omnisharp',
-                'pylsp',
+                  'omnisharp',
+                  'pylsp',
             }
 
         })
