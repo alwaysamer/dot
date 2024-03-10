@@ -1,5 +1,3 @@
-vim.g.barbar_auto_setup = false
-
 return {
     "romgrk/barbar.nvim",
     config = function ()
@@ -39,7 +37,7 @@ return {
                 preset = 'default',
                 alternate = {filetype = {enabled = false}},
                 current = {buffer_index = true},
-                inactive = {button = '×'},
+                inactive = nil,
                 visible = {modified = {buffer_number = false}},
             },
             insert_at_end = false,

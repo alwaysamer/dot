@@ -41,11 +41,13 @@ return {
             }
         })
 
-        
         local cmp = require('cmp')
         local cmp_action = require('lsp-zero').cmp_action()
 
         cmp.setup({
+            completion = {
+              completeopt = 'menu,menuone,noinsert',
+            },
             window = {
               completion = cmp.config.window.bordered(),
               documentation = cmp.config.window.bordered(),
