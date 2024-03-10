@@ -5,7 +5,7 @@ return {
             manual_mode = false,
             detection_methods = { "lsp", "pattern" },
             patterns = { ".git" },
-            exclude_dirs = {"~/.cargo/*"},
+            exclude_dirs = {"~/.cargo/*", "/opt/*"},
             show_hidden = true,
             silent_chdir = true,
             scope_chdir = 'global',
