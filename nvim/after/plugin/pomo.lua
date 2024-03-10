@@ -1,1 +1,0 @@
-require("pomo").setup({})
