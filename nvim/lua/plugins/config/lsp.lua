@@ -5,7 +5,7 @@ return {
         { 'neovim/nvim-lspconfig' },
         {
             'williamboman/mason.nvim',
-            run = function()
+            build = function()
                 pcall(vim.cmd, 'MasonUpdate')
             end,
         },
