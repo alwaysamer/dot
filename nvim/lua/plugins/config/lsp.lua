@@ -17,7 +17,6 @@ return {
     config = function ()
         local lsp = require('lsp-zero')
         lsp.preset("recommended")
-        
         require('mason').setup({})
         require('mason-lspconfig').setup({
             ensure_installed = {
@@ -42,8 +41,6 @@ return {
         })
 
         local cmp = require('cmp')
-        local cmp_action = require('lsp-zero').cmp_action()
-
         cmp.setup({
             completion = {
               completeopt = 'menu,menuone,noinsert',
@@ -52,27 +49,9 @@ return {
               completion = cmp.config.window.bordered(),
               documentation = cmp.config.window.bordered(),
             },
-            mapping = cmp.mapping.preset.insert({
-              ['<C-Space>'] = cmp.mapping.complete(),
-              ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-              ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-              ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-              ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          })
         })
 
-
-        local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-        cmp.event:on(
-            'confirm_done',
-            cmp_autopairs.on_confirm_done()
-        )
-        lsp.set_preferences({
-	        sign_icons = { }
-        })
-
-
-        lsp.on_attach(function(client,bufnr)
+        lsp.on_attach(function(_,bufnr)
 	        local opts = { buffer = bufnr, remap = false }
 	        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
