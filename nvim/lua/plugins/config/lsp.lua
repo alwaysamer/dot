@@ -30,6 +30,7 @@ return {
             }
 
         })
+
         lsp.configure('lua_ls', {
             settings = {
                 Lua = {
@@ -50,6 +51,12 @@ return {
               documentation = cmp.config.window.bordered(),
             },
         })
+
+        local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+        cmp.event:on(
+            'confirm_done',
+            cmp_autopairs.on_confirm_done()
+        )
 
         lsp.on_attach(function(_,bufnr)
 	        local opts = { buffer = bufnr, remap = false }
