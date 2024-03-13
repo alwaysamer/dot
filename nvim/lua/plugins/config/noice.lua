@@ -8,10 +8,10 @@ return
   },
   config = function ()
       require("notify").setup({
-          levels = "info",
+          level = vim.log.levels.WARN,
           fps = 30,
           render = "wrapped-compact",
-          timeout = 1000,
+          timeout = 500,
       })
 
       require("noice").setup({
