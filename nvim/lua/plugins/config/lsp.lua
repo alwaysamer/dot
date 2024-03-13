@@ -13,15 +13,17 @@ return {
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
         { 'L3MON4D3/LuaSnip' },
+        { 'folke/neodev.nvim' }
     },
     config = function ()
+        require("neodev").setup({})
         local lsp = require('lsp-zero')
         lsp.preset("recommended")
 
         require('mason').setup({})
         require('mason-lspconfig').setup({
             ensure_installed = {
-                'tsserver', 
+                'tsserver',
                 'rust_analyzer',
                 'gopls',
                 'pylsp',

@@ -7,6 +7,13 @@ return
     "rcarriga/nvim-notify",
   },
   config = function ()
+      require("notify").setup({
+          levels = "info",
+          fps = 30,
+          render = "wrapped-compact",
+          timeout = 1000,
+      })
+
       require("noice").setup({
             lsp = {
                 override = {
