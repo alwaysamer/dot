@@ -33,6 +33,8 @@ return {
                 {'<leader>xq', function () require('trouble').open("quickfix")  end,  description = "Trouble Quickfix"},
                 {'<leader>xl', function () require('trouble').open("loclist")  end,  description = "Trouble Loclist"},
                 {'<leader>xr', function () require('trouble').open("lsp_references")  end,  description = "Trouble LSP References"},
+                {'<leader>tc', ":TodoTelescope<CR>" ,  description = "Show ToDo-Comments"},
+                {'<leader>ee', ":AerialToggle<CR>" ,  description = "Show Code-Outline"},
                 {'<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],  description = "Replace Current Word"},
             }
         })
