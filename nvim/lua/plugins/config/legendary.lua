@@ -33,7 +33,6 @@ return {
                 {'<leader>xq', function () require('trouble').open("quickfix")  end,  description = "Trouble Quickfix"},
                 {'<leader>xl', function () require('trouble').open("loclist")  end,  description = "Trouble Loclist"},
                 {'<leader>xr', function () require('trouble').open("lsp_references")  end,  description = "Trouble LSP References"},
-                {'<s-i>', { n = '<CMD>lua require("FTerm").toggle()<CR>', t = '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>'  },  description = "Trouble LSP References"},
                 {'<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],  description = "Replace Current Word"},
             }
         })

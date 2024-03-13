@@ -17,18 +17,20 @@ return {
     config = function ()
         local lsp = require('lsp-zero')
         lsp.preset("recommended")
+
         require('mason').setup({})
         require('mason-lspconfig').setup({
             ensure_installed = {
-	              'tsserver',
-	              'eslint',
-	              'lua_ls',
-                  'gopls',
-	              'rust_analyzer',
-                  'omnisharp',
-                  'pylsp',
-            }
+                'tsserver', 
+                'rust_analyzer',
+                'gopls',
+                'pylsp',
+                'lua_ls',
 
+            },
+            handlers = {
+                lsp.default_setup,
+            },
         })
 
         lsp.configure('lua_ls', {
