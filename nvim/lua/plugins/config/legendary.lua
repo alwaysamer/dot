@@ -23,7 +23,7 @@ return {
                 { '<leader>xd', function() require('trouble').toggle("document_diagnostics") end,                                description = "Trouble Document Diagnostics" },
                 { '<leader>xr', function() require('trouble').toggle("lsp_references") end,                                      description = "Trouble LSP References" },
                 { '<leader>tc', ":TodoTelescope<CR>",                                                                          description = "Show ToDo-Comments" },
-                { '<leader>ee', ":AerialToggle<CR>",                                                                           description = "Show Code-Outline" },
+                { '<leader>ee', ":AerialToggle left<CR>",                                                                           description = "Show Code-Outline" },
                 { '<leader>s',  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],                                        description = "Replace Current Word" },
             }
         })
