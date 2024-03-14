@@ -8,7 +8,7 @@ return
   },
   config = function ()
       require("notify").setup({
-          level = vim.log.levels.INFO,
+          level = vim.log.levels.OFF,
           fps = 30,
           render = "wrapped-compact",
           timeout = 500,

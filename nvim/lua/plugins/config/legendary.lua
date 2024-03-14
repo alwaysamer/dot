@@ -3,8 +3,9 @@ return {
     config = function()
         require('legendary').setup({
             keymaps = {
-                { '<leader>ll', ":Legendary<CR>",                                                                               description = "Telescope Find Files" },
+                { '<leader>ll', ":Legendary<CR>",                                                                               description = "Show Keymaps" },
                 { '<leader>ff', require("telescope.builtin").find_files,                                                        description = "Telescope Find Files" },
+                { '<leader>fb', require("telescope.builtin").buffers,                                                           description = "Telescope Find Buffers" },
                 { '<leader>ps', function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }); end, description = "Grep String" },
                 { '<leader>pv', ":NvimTreeToggle<CR>",                                                                          description = "Toggle Project-View" },
                 { '<C-i>',      ":BufferPrevious<CR>",                                                                          description = "Previous Tab" },
