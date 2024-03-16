@@ -6,6 +6,7 @@ return {
                 { '<leader>ll', ":Legendary<CR>",                                                                               description = "Show Keymaps" },
                 { '<leader>ff', require("telescope.builtin").find_files,                                                        description = "Telescope Find Files" },
                 { '<leader>fb', require("telescope.builtin").buffers,                                                           description = "Telescope Find Buffers" },
+                { '<leader>uu', ":UndotreeToggle<CR>",                                                                          description = "Toggle UndoTree" },
                 { '<leader>ps', function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }); end, description = "Grep String" },
                 { '<leader>pv', ":NvimTreeToggle<CR>",                                                                          description = "Toggle Project-View" },
                 { '<C-i>',      ":BufferPrevious<CR>",                                                                          description = "Previous Tab" },
@@ -25,6 +26,7 @@ return {
                 { '<leader>xr', function() require('trouble').toggle("lsp_references") end,                                     description = "Trouble LSP References" },
                 { '<leader>tc', ":TodoTelescope<CR>",                                                                           description = "Show ToDo-Comments" },
                 { '<leader>ee', ":AerialToggle left<CR>",                                                                       description = "Show Code-Outline" },
+                { '<leader>zz', ":ZenMode<CR>",                                                                                 description = "Toggle ZenMode" },
                 { '<leader>s',  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],                                         description = "Replace Current Word" },
             }
         })

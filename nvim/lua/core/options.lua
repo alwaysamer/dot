@@ -17,10 +17,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.swapfile = false
 vim.opt.backup = false
-
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
