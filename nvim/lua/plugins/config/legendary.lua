@@ -6,6 +6,7 @@ return {
                 { '<leader>p',   n = "\"_dP",                                                                                    v = "\"_dP",                                          x = "\"_dP",             description = "Paste without resetting Clipboard" },
                 { '<leader>ll',  ":Legendary<CR>",                                                                               description = "Show Keymaps" },
                 { '<leader>ff',  require("telescope.builtin").find_files,                                                        description = "Telescope Find Files" },
+                { '<leader>cb',  ":Telescope neoclip<CR>",                                                                           description = "Show Clipboard" },
                 { '<leader>fb',  ":JABSOpen<CR>",                                                                                description = "Manage Buffers" },
                 { '<leader>uu',  ":UndotreeToggle<CR>",                                                                          description = "Toggle UndoTree" },
                 { '<leader>ps',  function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }); end, description = "Grep String" },

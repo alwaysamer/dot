@@ -16,7 +16,9 @@ return {
         { 'folke/neodev.nvim' }
     },
     config = function()
-        require("neodev").setup({})
+        require("neodev").setup({
+            library = { plugins = { "nvim-dap-ui" }, types = true },
+        })
         local lsp = require('lsp-zero')
         lsp.preset("recommended")
 
@@ -29,13 +31,14 @@ return {
                 'gopls',
                 'pylsp',
                 'lua_ls',
-
             },
             handlers = {
                 lsp.default_setup,
             },
         })
-
+        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+            underline = true,
+        })
         local cmp = require('cmp')
         cmp.setup({
             completion = {
@@ -70,5 +73,21 @@ return {
                 },
             },
         })
+        vim.fn.sign_define(
+            "LspDiagnosticsSignError",
+            { texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError" }
+        )
+        vim.fn.sign_define(
+            "LspDiagnosticsSignWarning",
+            { texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning" }
+        )
+        vim.fn.sign_define(
+            "LspDiagnosticsSignHint",
+            { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" }
+        )
+        vim.fn.sign_define(
+            "LspDiagnosticsSignInformation",
+            { texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation" }
+        )
     end
 }
