@@ -14,9 +14,9 @@ return {
         }
 
         dashboard.section.buttons.val = {
-            dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
-            dashboard.button( "f", "  > Recent", ":Telescope oldfiles<CR>"),
-            dashboard.button( "r", "  > Projects"   , ":Telescope projects<CR>"),
+            dashboard.button( "n", "  > New file" , ":ene <BAR> startinsert <CR>"),
+            dashboard.button( "r", "  > Recent", ":Telescope oldfiles<CR>"),
+            dashboard.button( "p", "  > Projects"   , ":Telescope projects<CR>"),
             dashboard.button( "d", "  > Docs", ":Neorg index<CR>"),
             dashboard.button( "s", "  > Settings" , ":e $MYVIMRC<CR>"),
             dashboard.button( "q", "󰩈  > Quit NVIM", ":qa<CR>"),

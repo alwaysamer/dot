@@ -4,23 +4,21 @@ return
   event = "VeryLazy",
   dependencies = {
     "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
   },
   config = function ()
-      require("notify").setup({
-          level = vim.log.levels.INFO,
-          fps = 30,
-          render = "wrapped-compact",
-          timeout = 500,
-      })
-
       require("noice").setup({
             lsp = {
+                progress = {
+                    enabled = false,
+                },
                 override = {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                     ["vim.lsp.util.stylize_markdown"] = true,
                     ["cmp.entry.get_documentation"] = true,
                 },
+            },
+            messages = {
+                enabled = false,
             },
             cmdline = {
                 view = "cmdline",
