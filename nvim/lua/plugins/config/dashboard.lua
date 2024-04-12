@@ -17,7 +17,7 @@ return {
             dashboard.button( "n", "  > New file" , ":ene <BAR> startinsert <CR>"),
             dashboard.button( "r", "  > Recent", ":Telescope oldfiles<CR>"),
             dashboard.button( "p", "  > Projects"   , ":Telescope projects<CR>"),
-            dashboard.button( "d", "  > Docs", ":Neorg index<CR>"),
+            dashboard.button( "d", "  > Journal", ":ObsidianToday<CR>"),
             dashboard.button( "s", "  > Settings" , ":e $MYVIMRC<CR>"),
             dashboard.button( "q", "󰩈  > Quit NVIM", ":qa<CR>"),
         }
