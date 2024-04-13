@@ -3,11 +3,17 @@ return {
     event = "LspAttach",
     config = function ()
         require('lspsaga').setup({
+            ui = {
+                code_action = ""
+            },
+            code_action_prompt = {
+                enable = false,
+            },
             outline = {
                 win_width = 50,
             },
             lightbulb = {
-                enabled = true,
+                enabled = false,
                 virtual_text = false
             },
         })
