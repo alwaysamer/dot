@@ -19,3 +19,4 @@ vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
+vim.opt.swapfile = false
