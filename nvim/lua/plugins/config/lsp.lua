@@ -12,12 +12,15 @@ return {
         { 'williamboman/mason-lspconfig.nvim' },
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
-        { 'L3MON4D3/LuaSnip' },
+        {
+            'L3MON4D3/LuaSnip',
+            build = "make install_jsregexp",
+        },
         { 'folke/neodev.nvim' }
     },
     config = function()
         require("neodev").setup({
-            library = { plugins = { "nvim-dap-ui" }, types = true },
+            library = { types = true },
         })
         local lsp = require('lsp-zero')
         lsp.preset("recommended")
@@ -36,10 +39,6 @@ return {
                 lsp.default_setup,
             },
         })
-        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            underline = true,
-        })
-
         local cmp = require('cmp')
         cmp.setup({
             formatting = {
@@ -81,6 +80,18 @@ return {
                 ["<c-space>"] = cmp.mapping {
                     i = cmp.mapping.complete(),
                 },
+                ["<c-y>"] = cmp.mapping {
+                    i = cmp.mapping.confirm {
+                        behavior = cmp.ConfirmBehavior.Insert,
+                        select = true,
+                    },
+                },
+                ["<c-n>"] = cmp.mapping {
+                    i = cmp.mapping.select_next_item(),
+                },
+                ["<c-p>"] = cmp.mapping {
+                    i = cmp.mapping.select_prev_item(),
+                },
             },
             preselect = cmp.PreselectMode.None,
             window = {
@@ -94,6 +105,20 @@ return {
             'confirm_done',
             cmp_autopairs.on_confirm_done()
         )
+        lsp.on_attach(function(client, bufnr)
+            local opts = { buffer = bufnr, remap = false }
+            vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+            vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+            vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+            vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+            vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end, opts)
+            vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, opts)
+            vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+            vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+            vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+            vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+        end)
+
         lsp.setup()
         require("lspconfig").dartls.setup({
             cmd = { "dart", "language-server", "--protocol=lsp" },
@@ -112,21 +137,11 @@ return {
                 },
             },
         })
-        vim.fn.sign_define(
-            "LspDiagnosticsSignError",
-            { texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError" }
-        )
-        vim.fn.sign_define(
-            "LspDiagnosticsSignWarning",
-            { texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning" }
-        )
-        vim.fn.sign_define(
-            "LspDiagnosticsSignHint",
-            { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" }
-        )
-        vim.fn.sign_define(
-            "LspDiagnosticsSignInformation",
-            { texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation" }
-        )
+
+        vim.diagnostic.config({
+            underline = true,
+            virtual_text = false,
+            signs = true,
+        })
     end
 }
