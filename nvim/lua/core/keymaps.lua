@@ -4,10 +4,10 @@ vim.g.mapleader = " "
 -- Paste without resetting Clipboard
 vim.keymap.set("x", "<leader>p", [["_dP]], { silent = true })
 
--- Previous Tab
+-- Previous Buffer
 vim.keymap.set("n", "<C-i>", ":bprevious<CR>", { silent = true })
 
--- Next Tab
+-- Next Buffer
 vim.keymap.set("n", "<C-o>", ":bnext<CR>", { silent = true })
 
 -- Redraw
