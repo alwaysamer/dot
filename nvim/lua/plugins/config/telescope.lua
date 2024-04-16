@@ -20,6 +20,7 @@ return {
             scope_chdir = 'global',
             datapath = vim.fn.stdpath("data"),
         }
+
         require('telescope').load_extension('projects')
 
         vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { silent = true })

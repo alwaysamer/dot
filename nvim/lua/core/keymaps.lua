@@ -1,9 +1,6 @@
 -- Map Leader
 vim.g.mapleader = " "
 
--- Paste without resetting Clipboard
-vim.keymap.set("x", "<leader>p", [["_dP]], { silent = true })
-
 -- Previous Buffer
 vim.keymap.set("n", "<C-i>", ":bprevious<CR>", { silent = true })
 
