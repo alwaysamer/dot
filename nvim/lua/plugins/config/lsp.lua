@@ -42,16 +42,8 @@ return {
         local cmp = require('cmp')
         cmp.setup({
             formatting = {
-                fields = { "abbr", "menu", "kind" },
+                fields = { "abbr", "kind" },
                 format = function(entry, item)
-                    local menu_icon = {
-                        nvim_lsp = "LSP",
-                        nvim_lua = "LUA",
-                        luasnip  = "SNP",
-                        buffer   = "BUFF",
-                        path     = "PATH",
-                    }
-                    item.menu = menu_icon[entry.source.name]
                     fixed_width = fixed_width or false
                     local content = item.abbr
                     if fixed_width then
