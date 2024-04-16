@@ -4,10 +4,6 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         'ahmedkhalf/project.nvim',
-        {
-            "folke/todo-comments.nvim",
-            opts = {},
-        },
     },
     config = function()
         require("project_nvim").setup {
@@ -24,9 +20,19 @@ return {
         require('telescope').load_extension('projects')
 
         vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { silent = true })
-        vim.keymap.set("n", "<leader>ps", function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }); end, { silent = true })
-        vim.keymap.set("n", "<leader>tc", ":TodoTelescope<CR>", { silent = true })
-        vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { silent = true })
-        vim.keymap.set("n", "<leader>fh", function () require("telescope.builtin").help_tags({ show_version = true }) end, { silent = true })
+        vim.keymap.set("n", "<leader>ps",
+            function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }); end,
+            { silent = true })
+        vim.keymap.set("n", "<leader>fb", function()
+            require("telescope.builtin").buffers({
+                show_all_buffers = true,
+                sort_lastused = true,
+                ignore_current_buffer = true,
+            })
+        end, { silent = true })
+        vim.keymap.set("n", "<leader>fh", function() require("telescope.builtin").help_tags({ show_version = true }) end,
+            { silent = true })
+        vim.keymap.set("n", "<leader>fg", function() require("telescope.builtin").git_files() end, { silent = true })
+        vim.keymap.set("n", "<leader>fd", function() require("telescope.builtin").diagnostics() end, { silent = true })
     end
 }
