@@ -10,3 +10,4 @@ vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, { silent =
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { silent = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
+vim.keymap.set("n", "<leader>vec", ":e $MYVIMRC<CR> ", { silent = true })
