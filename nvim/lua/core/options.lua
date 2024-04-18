@@ -6,8 +6,6 @@ vim.o.cmdheight = 0
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.g.loaded_netrw = 1

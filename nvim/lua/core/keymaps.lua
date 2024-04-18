@@ -1,15 +1,6 @@
 -- Map Leader
 vim.g.mapleader = " "
 
--- Previous Buffer
-vim.keymap.set("n", "<C-i>", ":bprevious<CR>", { silent = true })
-
--- Next Buffer
-vim.keymap.set("n", "<C-o>", ":bnext<CR>", { silent = true })
-
--- Redraw
-vim.keymap.set("n", "<C-l>", ":noh<CR>", { silent = true })
-
 -- Close Buffer
 vim.keymap.set("n", "<leader>q", ":bd<CR>", { silent = true })
 
@@ -42,6 +33,3 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
 
 -- Move Line Up
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
-
--- Join Lines
-vim.keymap.set("n", "J", "mzJ`z", { silent = true })
