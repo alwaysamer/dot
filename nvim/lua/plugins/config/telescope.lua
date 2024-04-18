@@ -34,5 +34,6 @@ return {
             { silent = true })
         vim.keymap.set("n", "<leader>fg", function() require("telescope.builtin").git_files() end, { silent = true })
         vim.keymap.set("n", "<leader>fd", function() require("telescope.builtin").diagnostics() end, { silent = true })
+        vim.keymap.set("n", "<leader>fp", ":silent Telescope projects<CR>", { silent = true })
     end
 }
