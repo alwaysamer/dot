@@ -24,10 +24,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
                         --color=fg:#8b8d8f,bg:#1d1f27,hl:#f09383 
                         --color=fg+:#8b8d8f,bg+:#1d1f27,hl+:#e8ab53 
                         --color=info:#27d796,prompt:#e95678,pointer:#e95678 
-                        --color=marker:#f09383,spinner:#f09383,header:#87afaf 
-                        --preview-window border-left"
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+                        --color=marker:#f09383,spinner:#f09383,header:#87afaf"
 
 _fzf_compgen_path() {
     fd --exclude .git . "$1"
@@ -35,17 +32,6 @@ _fzf_compgen_path() {
 
 _fzf_compgen_dir() {
     fd --type=d --exclude .git . "$1"
-}
-
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
-    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-  esac
 }
 
 alias v="nvim"
