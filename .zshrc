@@ -1,3 +1,5 @@
+setopt IGNORE_EOF
+
 export ZSH="/Users/amer3107/.oh-my-zsh"
 ZSH_THEME="daivasmara"
 plugins=(git zsh-autosuggestions tmux fzf-tab)
