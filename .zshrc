@@ -2,7 +2,7 @@ setopt IGNORE_EOF
 
 export ZSH="/Users/amer3107/.oh-my-zsh"
 ZSH_THEME="daivasmara"
-plugins=(git zsh-autosuggestions tmux fzf-tab)
+plugins=(git zsh-autosuggestions tmux fzf-tab copypath)
 ZSH_TMUX_AUTOSTART=true
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
