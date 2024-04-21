@@ -1,19 +1,19 @@
 setopt IGNORE_EOF
 
-export ZSH="/Users/amer3107/.oh-my-zsh"
+export ZSH="/Users/amer/.oh-my-zsh"
 ZSH_THEME="daivasmara"
 plugins=(git zsh-autosuggestions tmux fzf-tab copypath)
 ZSH_TMUX_AUTOSTART=true
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
-source ~/fzf-git.sh/fzf-git.sh
+source ~/source/fzf-git.sh/fzf-git.sh
 
 export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="$HOME/flutter/bin:$PATH"
-export PATH="$PATH:/Users/amer3107/.local/bin"
+export PATH="$PATH:/Users/amer/.local/bin"
 
 eval "$(fzf --zsh)"
 eval $(thefuck --alias)
