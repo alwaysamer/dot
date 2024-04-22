@@ -12,6 +12,7 @@ return {
         require("projections").setup({
             workspaces = {
                 "~/source",
+                "~/",
             },
             patterns = {".git"},
             workspaces_file = "~/.nvim.workspaces",
