@@ -5,6 +5,10 @@ ZSH_THEME="daivasmara"
 plugins=(git zsh-autosuggestions tmux fzf-tab copypath)
 ZSH_TMUX_AUTOSTART=true
 
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 source ~/source/fzf-git.sh/fzf-git.sh
@@ -39,3 +43,10 @@ _fzf_compgen_dir() {
 alias v="nvim"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias cd="z"
+
+# bun completions
+[ -s "/Users/amer/.bun/_bun" ] && source "/Users/amer/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
