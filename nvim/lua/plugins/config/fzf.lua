@@ -19,18 +19,6 @@ return {
             sessions_directory = "~/.nvim.sessions",
         })
 
-        local Session = require("projections.session")
-
-        vim.api.nvim_create_autocmd({ 'VimLeavePre' }, {
-            callback = function ()
-                Session.store(vim.loop.cwd())
-            end
-        })
-
-        vim.api.nvim_create_user_command("LoadProjectSession", function ()
-            Session.restore(vim.loop.cwd())
-        end, {})
-
         vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
         vim.keymap.set("n", "<leader>ps", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
         vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })

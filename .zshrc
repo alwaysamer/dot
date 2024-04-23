@@ -13,7 +13,6 @@ fi
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 source ~/source/fzf-git.sh/fzf-git.sh
-. "$HOME/.cargo/env"
 
 export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
