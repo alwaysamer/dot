@@ -9,6 +9,7 @@ return {
                 {
                     file_pattern = {
                         ".env*",
+                        "*env*",
                         "wrangler.toml",
                         ".dev.vars",
                     },
