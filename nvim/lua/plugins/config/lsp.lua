@@ -10,6 +10,12 @@ return {
             end,
         },
         { 'williamboman/mason-lspconfig.nvim' },
+        {
+            'windwp/nvim-autopairs',
+            event = "InsertEnter",
+            config = true
+
+        },
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
         {
@@ -91,6 +97,11 @@ return {
             },
         })
 
+        local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+        cmp.event:on(
+            'confirm_done',
+            cmp_autopairs.on_confirm_done()
+        )
         lsp.on_attach(function(client, bufnr)
             local opts = { buffer = bufnr, remap = false }
             vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
