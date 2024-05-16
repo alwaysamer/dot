@@ -18,6 +18,7 @@ return {
             workspaces_file = "~/.nvim.workspaces",
             sessions_directory = "~/.nvim.sessions",
         })
+        require('fzf-lua').register_ui_select()
 
         vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
         vim.keymap.set("n", "<leader>ps", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })

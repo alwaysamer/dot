@@ -19,6 +19,8 @@ export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="$HOME/flutter/bin:$PATH"
 export PATH="$PATH:/Users/amer/.local/bin"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
 eval "$(fzf --zsh)"
 eval $(thefuck --alias)
