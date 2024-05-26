@@ -3,12 +3,31 @@ return {
     branch = 'v3.x',
     dependencies = {
         { 'neovim/nvim-lspconfig' },
-        {
-            'williamboman/mason.nvim',
-            build = function()
-                pcall(vim.cmd, 'MasonUpdate')
-            end,
-        },
+        -- {
+        --     "scalameta/nvim-metals",
+        --     ft = { "scala", "sbt", "java" },
+        --     dependencies = {
+        --         "nvim-lua/plenary.nvim",
+        --     },
+        --     opts = function()
+        --         local metals_config = require("metals").bare_config()
+        --         metals_config.on_attach = function(client, bufnr)
+        --         end
+        --
+        --         return metals_config
+        --     end,
+        --     config = function(self, metals_config)
+        --         local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+        --         vim.api.nvim_create_autocmd("FileType", {
+        --             pattern = self.ft,
+        --             callback = function()
+        --                 require("metals").initialize_or_attach(metals_config)
+        --             end,
+        --             group = nvim_metals_group,
+        --         })
+        --     end
+        -- },
+        { 'williamboman/mason.nvim', },
         { 'williamboman/mason-lspconfig.nvim' },
         {
             'windwp/nvim-autopairs',
@@ -16,6 +35,7 @@ return {
             config = true
 
         },
+        { 'onsails/lspkind.nvim' },
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
         {
@@ -26,7 +46,7 @@ return {
     },
     config = function()
         require("neodev").setup({
-            library = { types = true },
+            library = { types = true, plugins = { "neotest" } },
         })
         local lsp = require('lsp-zero')
         lsp.preset("recommended")
@@ -45,28 +65,22 @@ return {
                 lsp.default_setup,
             },
         })
+
+        local kind = require('lspkind')
+        kind.init({})
+
         local cmp = require('cmp')
         cmp.setup({
-            formatting = {
-                fields = { "abbr", "kind" },
-                format = function(entry, item)
-                    fixed_width = fixed_width or false
-                    local content = item.abbr
-                    if fixed_width then
-                        vim.o.pumwidth = fixed_width
-                    end
-                    local win_width = vim.api.nvim_win_get_width(0)
-                    local max_content_width = fixed_width and fixed_width - 10 or math.floor(win_width * 0.2)
-                    if #content > max_content_width then
-                        item.abbr = vim.fn.strcharpart(content, 0, max_content_width - 3) .. "..."
-                    else
-                        item.abbr = content .. (" "):rep(max_content_width - #content)
-                    end
-                    return item
-                end,
-            },
             completion = {
                 completeopt = 'menu,menuone,noinsert',
+            },
+            formatting = {
+                format = kind.cmp_format({
+                    mode = 'symbol_text',
+                    maxwidth = 50,
+                    ellipsis_char = '…',
+                    show_labelDetails = true,
+                }),
             },
             view = {
                 docs = {
@@ -77,7 +91,14 @@ return {
                 ["<c-space>"] = cmp.mapping {
                     i = cmp.mapping.complete(),
                 },
-                ["<c-y>"] = cmp.mapping {
+                ['<C-g>'] = function()
+                    if cmp.visible_docs() then
+                        cmp.close_docs()
+                    else
+                        cmp.open_docs()
+                    end
+                end,
+                ["<TAB>"] = cmp.mapping {
                     i = cmp.mapping.confirm {
                         behavior = cmp.ConfirmBehavior.Insert,
                         select = true,
@@ -90,10 +111,23 @@ return {
                     i = cmp.mapping.select_prev_item(),
                 },
             },
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body)
+                end,
+            },
             preselect = cmp.PreselectMode.None,
             window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.disable,
+                completion = {
+                    border = "rounded",
+                    scrollbar = false,
+                },
+                documentation = {
+                    border = "rounded",
+                    scrollbar = true,
+                    maxwidth = 80,
+                    maxheight = 40,
+                },
             },
         })
 
@@ -116,23 +150,6 @@ return {
         end)
 
         lsp.setup()
-        require("lspconfig").dartls.setup({
-            cmd = { "dart", "language-server", "--protocol=lsp" },
-            filetypes = { "dart" },
-            init_options = {
-                closingLabels = true,
-                flutterOutline = true,
-                onlyAnalyzeProjectsWithOpenFiles = true,
-                outline = true,
-                suggestFromUnimportedLibraries = true,
-            },
-            settings = {
-                dart = {
-                    completeFunctionCalls = false,
-                    showTodos = true,
-                },
-            },
-        })
 
         vim.diagnostic.config({
             underline = true,

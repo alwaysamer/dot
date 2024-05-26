@@ -1,17 +1,15 @@
 setopt IGNORE_EOF
 
-export ZSH="/Users/amer/.oh-my-zsh"
-ZSH_THEME="daivasmara"
-plugins=(git zsh-autosuggestions tmux fzf-tab copypath)
-ZSH_TMUX_AUTOSTART=true
-bindkey '^ ' autosuggest-accept
 bindkey '^j' autosuggest-execute
+bindkey '^ ' autosuggest-accept
+
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
+
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH/oh-my-zsh.sh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/source/fzf-git.sh/fzf-git.sh
 
 export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
@@ -30,10 +28,11 @@ export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type=d"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
-                        --color=fg:#8b8d8f,bg:#1d1f27,hl:#f09383 
-                        --color=fg+:#8b8d8f,bg+:#1d1f27,hl+:#e8ab53 
-                        --color=info:#27d796,prompt:#e95678,pointer:#e95678 
-                        --color=marker:#f09383,spinner:#f09383,header:#87afaf"
+                        --color=fg:-1,fg+:-1,bg:-1,bg+:-1
+                        --color=hl:#5ea1ff,hl+:#5ef1ff,info:#afaf87,marker:#5eff6c
+                        --color=prompt:#ff5ea0,spinner:#ff5ef1,pointer:#bd5eff,header:#87afaf
+                        --color=border:#262626,label:#aeaeae,query:#d9d9d9"
+
 
 _fzf_compgen_path() {
     fd --exclude .git . "$1"
@@ -46,3 +45,6 @@ _fzf_compgen_dir() {
 alias v="nvim"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias cd="z"
+eval "$(starship init zsh)"
+
+if [ "$TMUX" = "" ]; then tmux; fi

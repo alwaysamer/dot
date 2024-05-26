@@ -14,7 +14,7 @@ return {
                 "~/source",
                 "~/",
             },
-            patterns = {".git"},
+            patterns = { ".git" },
             workspaces_file = "~/.nvim.workspaces",
             sessions_directory = "~/.nvim.sessions",
         })
@@ -25,7 +25,8 @@ return {
         vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
         vim.keymap.set("n", "<leader>fh", "<cmd>lua require('fzf-lua').helptags()<CR>", { silent = true })
         vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').git_files()<CR>", { silent = true })
-        vim.keymap.set("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_workspace_diagnostics()<CR>", { silent = true })
+        vim.keymap.set("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_workspace_diagnostics()<CR>",
+            { silent = true })
         vim.keymap.set("n", "<leader>fp", "<cmd>lua require('fzf-lua-p').projects()<CR>", { silent = true })
     end
 }

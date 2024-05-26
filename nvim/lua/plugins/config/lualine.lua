@@ -1,48 +1,53 @@
 return {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-        require('lualine').setup {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function()
+        local colors = require("cyberdream.colors").default
+        local cyberdream = require("lualine.themes.cyberdream")
+        local copilot_colors = {
+            [""] = { fg = colors.grey, bg = colors.none },
+            ["Normal"] = { fg = colors.grey, bg = colors.none },
+            ["Warning"] = { fg = colors.red, bg = colors.none },
+            ["InProgress"] = { fg = colors.yellow, bg = colors.none },
+        }
+        return {
             options = {
-                icons_enabled = true,
-                theme = 'horizon',
-                component_separators = '',
-                section_separators = { left = '', right = '' },
-                disabled_filetypes = { 'alpha' },
-                ignore_focus = {},
-                always_divide_middle = true,
-                globalstatus = false,
-                refresh = {
-                    statusline = 1000,
-                    tabline = 1000,
-                    winbar = 1000,
-                }
+                component_separators = { left = " ", right = " " },
+                section_separators = { left = " ", right = " " },
+                theme = cyberdream,
+                globalstatus = true,
+                disabled_filetypes = { statusline = { "dashboard", "alpha" } },
             },
             sections = {
-                lualine_a = { { 'mode', separator = { left = '', right = '' }, right_padding = 2 } },
-                lualine_c = { 'filename' },
-                lualine_x = {
-                    "encoding",
-                    "fileformat",
-                    "filetype",
+                lualine_a = { { "mode", icon = "" } },
+                lualine_b = { { "branch", icon = "" } },
+                lualine_c = {
+                    {
+                        "diagnostics",
+                        symbols = {
+                            error = " ",
+                            warn = " ",
+                            info = " ",
+                            hint = "󰝶 ",
+                        },
+                    },
+                    { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+                    {
+                        "filename",
+                        symbols = { modified = "  ", readonly = "", unnamed = "" },
+                    },
                 },
-                lualine_y = { 'progress' },
-                lualine_z = {
-                    { 'location', separator = { right = '', left = '' }, left_padding = 2 },
-                },
-            },
-            inactive_sections = {
-                lualine_a = { 'filename' },
-                lualine_b = {},
-                lualine_c = {},
                 lualine_x = {},
-                lualine_y = {},
-                lualine_z = { 'location' }
+                lualine_y = {
+                    {
+                        "location",
+                        color = { fg = colors.cyan, bg = colors.none },
+                    },
+                },
+                lualine_z = {},
             },
-            tabline = {},
-            winbar = {},
-            inactive_winbar = {},
-            extensions = { 'oil', 'lazy', 'quickfix' }
+
+            extensions = { "lazy", "mason", "oil", "fzf" },
         }
-    end
+    end,
 }
