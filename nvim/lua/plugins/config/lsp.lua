@@ -43,6 +43,36 @@ return {
             },
             handlers = {
                 default_setup,
+                tsserver = function()
+                    require('lspconfig').tsserver.setup({
+                        capabilities = lsp_capabilities,
+                        settings = {
+                            javascript = {
+                                inlayHints = {
+                                    includeInlayEnumMemberValueHints = true,
+                                    includeInlayFunctionLikeReturnTypeHints = true,
+                                    includeInlayFunctionParameterTypeHints = true,
+                                    includeInlayParameterNameHints = "all",
+                                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                                    includeInlayPropertyDeclarationTypeHints = true,
+                                    includeInlayVariableTypeHints = true,
+                                },
+                            },
+
+                            typescript = {
+                                inlayHints = {
+                                    includeInlayEnumMemberValueHints = true,
+                                    includeInlayFunctionLikeReturnTypeHints = true,
+                                    includeInlayFunctionParameterTypeHints = true,
+                                    includeInlayParameterNameHints = "all",
+                                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                                    includeInlayPropertyDeclarationTypeHints = true,
+                                    includeInlayVariableTypeHints = true,
+                                },
+                            },
+                        }
+                    })
+                end,
                 rust_analyzer = function()
                     require('lspconfig').rust_analyzer.setup({
                         capabilities = lsp_capabilities,
@@ -184,7 +214,8 @@ return {
                 vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
                 vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
                 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-                vim.keymap.set("n", "<leader>vi", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
+                vim.keymap.set("n", "<leader>vi",
+                    function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
             end
         })
