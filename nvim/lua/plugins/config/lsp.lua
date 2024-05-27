@@ -43,6 +43,22 @@ return {
             },
             handlers = {
                 default_setup,
+                rust_analyzer = function()
+                    require('lspconfig').rust_analyzer.setup({
+                        capabilities = lsp_capabilities,
+                        settings = {
+                            ["rust-analyzer"] = {
+                                inlayHints = {
+                                    enable = true,
+                                    chainingHints = true,
+                                    typeHints = true,
+                                    parameterHints = true,
+                                    maxLength = 80,
+                                },
+                            },
+                        },
+                    })
+                end,
                 gopls = function()
                     require('lspconfig').gopls.setup({
                         capabilities = lsp_capabilities,
@@ -162,17 +178,13 @@ return {
             desc = 'LSP actions',
             callback = function(event)
                 local opts = { buffer = event.buf }
-
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-                vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-                vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
                 vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end, opts)
                 vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, opts)
                 vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
                 vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
                 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-                vim.keymap.set("n", "<leader>vi",
-                    function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
+                vim.keymap.set("n", "<leader>vi", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
             end
         })
@@ -202,5 +214,6 @@ return {
             virtual_text = false,
             signs = true,
         })
+        vim.lsp.inlay_hint.enable(true)
     end
 }
