@@ -9,6 +9,7 @@ return {
             config = true
 
         },
+        {"jay-babu/mason-nvim-dap.nvim"},
         { 'onsails/lspkind.nvim' },
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
@@ -32,6 +33,7 @@ return {
         end
 
         require('mason').setup({})
+        require('mason-nvim-dap').setup()
         require('mason-lspconfig').setup({
             automatic_installation = true,
             ensure_installed = {

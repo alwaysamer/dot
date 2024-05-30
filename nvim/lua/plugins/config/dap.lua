@@ -2,8 +2,8 @@ return {
     {
         "mfussenegger/nvim-dap",
         dependencies = {
-            "leoluz/nvim-dap-go",
             "rcarriga/nvim-dap-ui",
+            "leoluz/nvim-dap-go",
             "nvim-neotest/nvim-nio",
             "mfussenegger/nvim-dap-python",
             'theHamsta/nvim-dap-virtual-text',
@@ -13,29 +13,52 @@ return {
             local ui = require "dapui"
 
             require("dapui").setup()
-            require("dap-go").setup()
             require("dap-python").setup('~/.virtualenvs/debugpy/bin/python')
-            require("nvim-dap-virtual-text").setup()
-
-            local elixir_ls_debugger = vim.fn.exepath "elixir-ls-debugger"
-            if elixir_ls_debugger ~= "" then
-                dap.adapters.mix_task = {
-                    type = "executable",
-                    command = elixir_ls_debugger,
-                }
-
-                dap.configurations.elixir = {
+            require("dap-go").setup({
+                dap_configurations = {
                     {
-                        type = "mix_task",
-                        name = "phoenix server",
-                        task = "phx.server",
+                        type = "go",
                         request = "launch",
-                        projectDir = "${workspaceFolder}",
-                        exitAfterTaskReturns = false,
-                        debugAutoInterpretAllModules = false,
+                        name = "Launch Project",
+                        program = vim.loop.cwd() .. "/main.go",
                     },
                 }
-            end
+            })
+            require("nvim-dap-virtual-text").setup()
+
+            dap.configurations.scala = {
+                {
+
+                    type = "scala",
+                    request = "launch",
+                    name = "Run",
+                    metals = {
+                        runType = "runOrTestFile",
+                    },
+                },
+            }
+
+
+            dap.adapters.codelldb = {
+                type = 'server',
+                port = "${port}",
+                executable = {
+                    command = 'codelldb',
+                    args = { "--port", "${port}" },
+                }
+            }
+            dap.configurations.rust = {
+                {
+                    name = "Debug",
+                    type = "codelldb",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    end,
+                    cwd = "${workspaceFolder}",
+                    stopOnEntry = false,
+                },
+            }
             dap.configurations.python = {
                 {
                     type = 'python',
@@ -76,6 +99,8 @@ return {
                     console = "integratedTerminal",
                 }
             }
+
+
 
             vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
             vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
