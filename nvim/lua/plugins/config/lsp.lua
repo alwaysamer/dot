@@ -13,8 +13,6 @@ return {
         { 'onsails/lspkind.nvim' },
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/cmp-buffer' },
-        { 'hrsh7th/cmp-cmdline' },
         {
             'L3MON4D3/LuaSnip',
             build = "make install_jsregexp",
@@ -31,7 +29,6 @@ return {
                 capabilities = lsp_capabilities,
             })
         end
-
         require('mason').setup({})
         require('mason-nvim-dap').setup()
         require('mason-lspconfig').setup({
@@ -118,11 +115,17 @@ return {
         local cmp = require('cmp')
         cmp.setup({
             formatting = {
+                fields = { 'kind', 'abbr', 'menu' },
                 format = kind.cmp_format({
-                    mode = 'symbol_text',
+                    menu = {},
+                    mode = 'symbol',
                     maxwidth = 50,
                     ellipsis_char = '…',
                     show_labelDetails = true,
+                    before = function (entry, vim_item)
+                        vim_item.menu = nil
+                        return vim_item
+                    end
                 }),
             },
             view = {
@@ -178,23 +181,9 @@ return {
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
-                { name = 'buffer' },
             })
         })
 
-        cmp.setup.cmdline(':', {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({
-                { name = 'path' }
-            }, {
-                {
-                    name = 'cmdline',
-                    option = {
-                        ignore_cmds = { 'Man', '!' }
-                    }
-                }
-            })
-        })
 
         local cmp_autopairs = require('nvim-autopairs.completion.cmp')
         cmp.event:on(
