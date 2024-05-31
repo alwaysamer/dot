@@ -154,6 +154,9 @@ return {
                     i = cmp.mapping.select_prev_item(),
                 },
             },
+            completion = {
+                completeopt = 'menu,menuone,noinsert',
+            },
             snippet = {
                 expand = function(args)
                     require('luasnip').lsp_expand(args.body)
@@ -177,13 +180,6 @@ return {
                 { name = 'luasnip' },
                 { name = 'buffer' },
             })
-        })
-
-        cmp.setup.cmdline('/', {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = 'buffer' }
-            }
         })
 
         cmp.setup.cmdline(':', {
