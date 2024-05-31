@@ -18,6 +18,7 @@ return {
             workspaces_file = "~/.nvim.workspaces",
             sessions_directory = "~/.nvim.sessions",
         })
+        require('fzf-lua').setup({'fzf-native'})
         require('fzf-lua').register_ui_select()
 
         vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
@@ -28,5 +29,12 @@ return {
         vim.keymap.set("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_workspace_diagnostics()<CR>",
             { silent = true })
         vim.keymap.set("n", "<leader>fp", "<cmd>lua require('fzf-lua-p').projects()<CR>", { silent = true })
+        vim.keymap.set({ "i" }, "<C-x><C-f>",
+            function()
+                require("fzf-lua").complete_file({
+                    cmd = "rg --files",
+                    winopts = { preview = { hidden = "nohidden" } }
+                })
+            end, { silent = true, desc = "Fuzzy complete file" })
     end
 }

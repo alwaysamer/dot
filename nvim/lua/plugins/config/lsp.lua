@@ -122,7 +122,7 @@ return {
                     maxwidth = 50,
                     ellipsis_char = '…',
                     show_labelDetails = true,
-                    before = function (entry, vim_item)
+                    before = function (_, vim_item)
                         vim_item.menu = nil
                         return vim_item
                     end
@@ -198,11 +198,11 @@ return {
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
                 vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end, opts)
                 vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, opts)
-                vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-                vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+                vim.keymap.set("n", "<leader>vca", "<cmd>FzfLua lsp_code_actions", opts)
+                vim.keymap.set("n", "<leader>vrr", "<cmd>FzfLua lsp_references<cr>", opts)
                 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
                 vim.keymap.set("n", "<leader>vi",
-                    function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
+                    function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, opts)
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
             end
         })
