@@ -111,7 +111,7 @@ return {
 
         local kind = require('lspkind')
         kind.init({})
-
+        
         local cmp = require('cmp')
         cmp.setup({
             formatting = {
@@ -119,7 +119,7 @@ return {
                 format = kind.cmp_format({
                     menu = {},
                     mode = 'symbol',
-                    maxwidth = 50,
+                    maxwidth = 20,
                     ellipsis_char = '…',
                     show_labelDetails = true,
                     before = function (_, vim_item)
@@ -198,7 +198,8 @@ return {
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
                 vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end, opts)
                 vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, opts)
-                vim.keymap.set("n", "<leader>vca", "<cmd>FzfLua lsp_code_actions", opts)
+                vim.keymap.set("n", "<leader>vwd", "<cmd>FzfLua lsp_workspace_diagnostics<cr>", opts)
+                vim.keymap.set("n", "<leader>vca", "<cmd>FzfLua lsp_code_actions<cr>", opts)
                 vim.keymap.set("n", "<leader>vrr", "<cmd>FzfLua lsp_references<cr>", opts)
                 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
                 vim.keymap.set("n", "<leader>vi",

@@ -58,6 +58,3 @@ alt - q                       : yabai -m window --close
 
 # Float or unfloat a window
 alt - t                       : yabai -m window --toggle float
-
-# open WezTerm
-alt - return                  : open -na wezterm
