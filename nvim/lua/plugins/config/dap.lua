@@ -26,19 +26,6 @@ return {
             })
             require("nvim-dap-virtual-text").setup()
 
-            dap.configurations.scala = {
-                {
-
-                    type = "scala",
-                    request = "launch",
-                    name = "Run",
-                    metals = {
-                        runType = "runOrTestFile",
-                    },
-                },
-            }
-
-
             dap.adapters.codelldb = {
                 type = 'server',
                 port = "${port}",
