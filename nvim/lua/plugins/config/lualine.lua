@@ -4,12 +4,6 @@ return {
     opts = function()
         local colors = require("cyberdream.colors").default
         local cyberdream = require("lualine.themes.cyberdream")
-        local copilot_colors = {
-            [""] = { fg = colors.grey, bg = colors.none },
-            ["Normal"] = { fg = colors.grey, bg = colors.none },
-            ["Warning"] = { fg = colors.red, bg = colors.none },
-            ["InProgress"] = { fg = colors.yellow, bg = colors.none },
-        }
         return {
             options = {
                 component_separators = { left = " ", right = " " },

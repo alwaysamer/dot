@@ -5,8 +5,6 @@ return {
         "nvim-lua/plenary.nvim",
         "nvim-neotest/neotest-plenary",
         "nvim-neotest/neotest-python",
-        "jfpedroza/neotest-elixir",
-        "Issafalcon/neotest-dotnet",
         "rcasia/neotest-java",
         "antoinemadec/FixCursorHold.nvim",
         "nvim-treesitter/nvim-treesitter",
@@ -20,7 +18,6 @@ return {
                 require("neotest-plenary"),
                 require("neotest-java"),
                 require("neotest-python"),
-                require("neotest-elixir"),
                 require("neotest-rust"),
             }
         })
