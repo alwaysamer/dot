@@ -18,7 +18,6 @@ return {
         dashboard.section.buttons.val = {
             dashboard.button("n", "  > New file", ":silent ene <BAR> startinsert <CR>"),
             dashboard.button("r", "  > Recent files"   , "<cmd>lua require('fzf-lua').oldfiles()<CR>"),
-            dashboard.button("p", "  > Projects", "<cmd>lua require('fzf-lua-p').projects()<CR>"),
             dashboard.button("q", "󰩈  > Quit NVIM", ":silent qa<CR>"),
         }
 
