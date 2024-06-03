@@ -9,7 +9,7 @@ return {
             config = true
 
         },
-        {"jay-babu/mason-nvim-dap.nvim"},
+        { "jay-babu/mason-nvim-dap.nvim" },
         { 'onsails/lspkind.nvim' },
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
@@ -109,9 +109,11 @@ return {
             },
         })
 
+        require('lspconfig').gleam.setup({})
+
         local kind = require('lspkind')
         kind.init({})
-        
+
         local cmp = require('cmp')
         cmp.setup({
             formatting = {
@@ -122,7 +124,7 @@ return {
                     maxwidth = 20,
                     ellipsis_char = '…',
                     show_labelDetails = true,
-                    before = function (_, vim_item)
+                    before = function(_, vim_item)
                         vim_item.menu = nil
                         return vim_item
                     end
@@ -200,6 +202,7 @@ return {
                 vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, opts)
                 vim.keymap.set("n", "<leader>vca", "<cmd>FzfLua lsp_code_actions<cr>", opts)
                 vim.keymap.set("n", "<leader>vrr", "<cmd>FzfLua lsp_references<cr>", opts)
+                vim.keymap.set("n", "<leader>vfs", "<cmd>FzfLua lsp_document_symbols<cr>", opts)
                 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
                 vim.keymap.set("n", "<leader>vi",
                     function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, opts)
