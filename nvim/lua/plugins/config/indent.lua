@@ -5,8 +5,7 @@ return {
     config = function()
         require("ibl").setup({
             scope = {
-                show_start = false,
-                show_end = false,
+                enabled = false,
             },
         })
         local indent_blankline_augroup = vim.api.nvim_create_augroup("indent_blankline_augroup", { clear = true })
