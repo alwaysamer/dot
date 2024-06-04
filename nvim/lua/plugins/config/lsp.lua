@@ -200,6 +200,8 @@ return {
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
                 vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end, opts)
                 vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, opts)
+                vim.keymap.set("n", "<leader>vd", "<cmd>FzfLua diagnostics_document<cr>", opts)
+                vim.keymap.set("n", "<leader>vwd", "<cmd>FzfLua diagnostics_workspace<cr>", opts)
                 vim.keymap.set("n", "<leader>vca", "<cmd>FzfLua lsp_code_actions<cr>", opts)
                 vim.keymap.set("n", "<leader>vrr", "<cmd>FzfLua lsp_references<cr>", opts)
                 vim.keymap.set("n", "<leader>vfs", "<cmd>FzfLua lsp_document_symbols<cr>", opts)
