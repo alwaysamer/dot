@@ -17,3 +17,4 @@ vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.g.loaded_matchparen = false
