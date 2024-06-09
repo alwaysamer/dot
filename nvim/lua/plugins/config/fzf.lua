@@ -4,7 +4,14 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     config = function()
-        require('fzf-lua').setup({ 'fzf-native' })
+        require('fzf-lua').setup({
+            winopts = {
+                border = "single",
+                preview = {
+                    scrollbar = false,
+                }
+            },
+        })
         require('fzf-lua').register_ui_select()
 
         vim.keymap.set("n", "<c-f>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
