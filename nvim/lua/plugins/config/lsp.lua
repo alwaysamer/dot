@@ -198,6 +198,7 @@ return {
                 },
             },
             completion = {
+                autcomplete = true,
                 completeopt = 'menu,menuone,noinsert',
             },
             snippet = {
