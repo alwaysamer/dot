@@ -191,10 +191,10 @@ return {
                     },
                 },
                 ["<c-n>"] = cmp.mapping {
-                    i = cmp.mapping.select_next_item(),
+                    i = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
                 },
                 ["<c-p>"] = cmp.mapping {
-                    i = cmp.mapping.select_prev_item(),
+                    i = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
                 },
             },
             completion = {
