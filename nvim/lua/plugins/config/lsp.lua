@@ -11,7 +11,7 @@ return {
         },
         { "jay-babu/mason-nvim-dap.nvim" },
         { 'onsails/lspkind.nvim' },
-        { 'hrsh7th/nvim-cmp' },
+        { 'alwaysamer/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
         {
             'L3MON4D3/LuaSnip',
@@ -23,10 +23,24 @@ return {
         require("neodev").setup({
             library = { types = true, plugins = { "neotest" } },
         })
+
         local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
         local default_setup = function(server)
             require('lspconfig')[server].setup({
                 capabilities = lsp_capabilities,
+                on_attach = function(client, bufnr)
+                    if client.supports_method("textDocument/formatting") then
+                        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            group = augroup,
+                            buffer = bufnr,
+                            callback = function()
+                                vim.lsp.buf.format()
+                            end
+                        })
+                    end
+                end
             })
         end
         require('mason').setup({})
@@ -112,10 +126,31 @@ return {
         require('lspconfig').gleam.setup({})
 
         local kind = require('lspkind')
-        kind.init({})
+        kind.init({
+            symbol_map = {
+                Copilot = "",
+            },
+        })
+        vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { link = "@constructor" })
 
         local cmp = require('cmp')
+
         cmp.setup({
+            sorting = {
+                priority_weight = 2,
+                comparators = {
+                    require("copilot_cmp.comparators").prioritize,
+                    cmp.config.compare.offset,
+                    cmp.config.compare.exact,
+                    cmp.config.compare.score,
+                    cmp.config.compare.recently_used,
+                    cmp.config.compare.locality,
+                    cmp.config.compare.kind,
+                    cmp.config.compare.sort_text,
+                    cmp.config.compare.length,
+                    cmp.config.compare.order,
+                }
+            },
             formatting = {
                 fields = { 'kind', 'abbr', 'menu' },
                 format = kind.cmp_format({
@@ -181,8 +216,9 @@ return {
                 },
             },
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' },
+                { name = "copilot",  group_index = 2 },
+                { name = 'nvim_lsp', group_index = 2 },
+                { name = 'luasnip',  group_index = 2 },
             })
         })
 
