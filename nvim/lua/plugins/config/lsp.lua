@@ -11,7 +11,7 @@ return {
         },
         { "jay-babu/mason-nvim-dap.nvim" },
         { 'onsails/lspkind.nvim' },
-        { 'alwaysamer/nvim-cmp' },
+        { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
         {
             'L3MON4D3/LuaSnip',
@@ -166,6 +166,9 @@ return {
                 }),
             },
             view = {
+                entries = {
+                    follow_cursor = true
+                },
                 docs = {
                     auto_open = false,
                 },
