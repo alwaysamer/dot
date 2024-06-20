@@ -12,6 +12,9 @@ return {
         { "jay-babu/mason-nvim-dap.nvim" },
         { 'onsails/lspkind.nvim' },
         { 'hrsh7th/nvim-cmp' },
+        {
+            'Bekaboo/dropbar.nvim',
+        },
         { 'hrsh7th/cmp-nvim-lsp' },
         {
             'L3MON4D3/LuaSnip',
@@ -23,24 +26,24 @@ return {
         require("neodev").setup({
             library = { types = true, plugins = { "neotest" } },
         })
-
         local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+        local format = function(client, bufnr)
+            if client.supports_method("textDocument/formatting") then
+                vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+                vim.api.nvim_create_autocmd("BufWritePre", {
+                    group = augroup,
+                    buffer = bufnr,
+                    callback = function()
+                        vim.lsp.buf.format()
+                    end
+                })
+            end
+        end
         local default_setup = function(server)
             require('lspconfig')[server].setup({
                 capabilities = lsp_capabilities,
-                on_attach = function(client, bufnr)
-                    if client.supports_method("textDocument/formatting") then
-                        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-                        vim.api.nvim_create_autocmd("BufWritePre", {
-                            group = augroup,
-                            buffer = bufnr,
-                            callback = function()
-                                vim.lsp.buf.format()
-                            end
-                        })
-                    end
-                end
+                on_attach = format,
             })
         end
         require('mason').setup({})
@@ -59,6 +62,7 @@ return {
                 tsserver = function()
                     require('lspconfig').tsserver.setup({
                         capabilities = lsp_capabilities,
+                        on_attach = format,
                         settings = {
                             javascript = {
                                 inlayHints = {
@@ -89,6 +93,7 @@ return {
                 rust_analyzer = function()
                     require('lspconfig').rust_analyzer.setup({
                         capabilities = lsp_capabilities,
+                        on_attach = format,
                         settings = {
                             ["rust-analyzer"] = {
                                 inlayHints = {
@@ -105,6 +110,7 @@ return {
                 gopls = function()
                     require('lspconfig').gopls.setup({
                         capabilities = lsp_capabilities,
+                        on_attach = format,
                         settings = {
                             gopls = {
                                 hints = {
