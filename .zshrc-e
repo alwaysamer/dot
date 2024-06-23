@@ -55,5 +55,3 @@ alias gf="git fetch"
 alias gs="git status"
 
 if [ "$TMUX" = "" ]; then tmux; fi
-
-[ -f "/Users/amer/.ghcup/env" ] && . "/Users/amer/.ghcup/env" # ghcup-env
