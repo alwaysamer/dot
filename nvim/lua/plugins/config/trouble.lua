@@ -20,7 +20,7 @@ return {
         },
         {
 
-            "<c-n>",
+            "<c-j>",
             function()
                 require("trouble").next({
                     jump = true,
@@ -30,7 +30,7 @@ return {
         },
         {
 
-            "<c-p>",
+            "<c-k>",
             function()
                 require("trouble").prev({
                     jump = true,
