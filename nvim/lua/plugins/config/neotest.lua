@@ -16,7 +16,9 @@ return {
             adapters = {
                 require("neotest-go"),
                 require("neotest-plenary"),
-                require("neotest-java"),
+                require("neotest-java")({
+                    ignore_wrapper = false,
+                }),
                 require("neotest-python"),
                 require("neotest-rust"),
             }

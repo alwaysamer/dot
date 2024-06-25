@@ -14,6 +14,10 @@ return {
         })
         require('fzf-lua').register_ui_select()
 
+        local config = require('fzf-lua.config')
+        local actions = require('trouble.sources.fzf').actions
+        config.defaults.actions.files["ctrl-t"] = actions.open
+
         vim.keymap.set("n", "<c-f>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
         vim.keymap.set("n", "<leader>ps", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
         vim.keymap.set("n", "<c-b>", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })

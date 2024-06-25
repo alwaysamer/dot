@@ -245,10 +245,6 @@ return {
                 local opts = { buffer = event.buf }
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
                 vim.keymap.set("n", "gD", "<cmd>FzfLua lsp_definitions<cr>", opts)
-                vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end, opts)
-                vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, opts)
-                vim.keymap.set("n", "<leader>xx", "<cmd>FzfLua diagnostics_document<cr>", opts)
-                vim.keymap.set("n", "<leader>xX", "<cmd>FzfLua diagnostics_workspace<cr>", opts)
                 vim.keymap.set("n", "<leader>vca", "<cmd>FzfLua lsp_code_actions<cr>", opts)
                 vim.keymap.set("n", "<leader>vrr", "<cmd>FzfLua lsp_references<cr>", opts)
                 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
