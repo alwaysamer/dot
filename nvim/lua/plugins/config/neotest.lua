@@ -23,9 +23,11 @@ return {
                 require("neotest-rust"),
             }
         })
-        vim.keymap.set("n", "<leader>vrt", "<cmd>lua require('neotest').run.run()<CR>", { silent = true })
-        vim.keymap.set("n", "<leader>vrs", "<cmd>lua require('neotest').run.stop()<CR>", { silent = true })
+        vim.keymap.set("n", "<leader>vrt", "<cmd>lua require('neotest').run.run()<CR>",
+            { silent = true, desc = "Neotest Run Test" })
+        vim.keymap.set("n", "<leader>vrs", "<cmd>lua require('neotest').run.stop()<CR>",
+            { silent = true, desc = "Neotest Stop Test" })
         vim.keymap.set("n", "<leader>vrf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>",
-            { silent = true })
+            { silent = true, desc = "Neotest Run File" })
     end
 }

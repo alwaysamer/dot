@@ -242,16 +242,23 @@ return {
         vim.api.nvim_create_autocmd('LspAttach', {
             desc = 'LSP actions',
             callback = function(event)
-                local opts = { buffer = event.buf }
-                vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-                vim.keymap.set("n", "gD", "<cmd>FzfLua lsp_definitions<cr>", opts)
-                vim.keymap.set("n", "gI", "<cmd>FzfLua lsp_implementations<cr>", opts)
-                vim.keymap.set("n", "<leader>vca", "<cmd>FzfLua lsp_code_actions<cr>", opts)
-                vim.keymap.set("n", "<leader>vrr", "<cmd>FzfLua lsp_references<cr>", opts)
-                vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+                vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end,
+                    { buffer = event.buf, desc = "LSP Go to Definition" })
+                vim.keymap.set("n", "gD", "<cmd>FzfLua lsp_definitions<cr>",
+                    { buffer = event.buf, desc = "LSP Go to Definitions" })
+                vim.keymap.set("n", "gI", "<cmd>FzfLua lsp_implementations<cr>",
+                    { buffer = event.buf, desc = "LSP Go to Implementations" })
+                vim.keymap.set("n", "<leader>vca", "<cmd>FzfLua lsp_code_actions<cr>",
+                    { buffer = event.buf, desc = "LSP Show Code Actions" })
+                vim.keymap.set("n", "<leader>vrr", "<cmd>FzfLua lsp_references<cr>",
+                    { buffer = event.buf, desc = "LSP Go to References" })
+                vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end,
+                    { buffer = event.buf, desc = "LSP Rename" })
                 vim.keymap.set("n", "<leader>vi",
-                    function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, opts)
-                vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+                    function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end,
+                    { buffer = event.buf, desc = "LSP Toggle Inlay-Hints" })
+                vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end,
+                    { buffer = event.buf, desc = "LSP Toggle Signaure-Help" })
             end
         })
 

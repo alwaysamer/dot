@@ -41,7 +41,7 @@ return {
                 border = "single",
             },
         })
-        vim.keymap.set("n", "<leader>pv", ":Oil --float<CR>", { silent = true })
+        vim.keymap.set("n", "<leader>pv", ":Oil --float<CR>", { silent = true, desc = "Oil Toggle" })
         vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#ffffff" })
     end
 }

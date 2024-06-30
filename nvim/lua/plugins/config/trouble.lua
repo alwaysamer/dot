@@ -6,17 +6,17 @@ return {
         {
             "<leader>xX",
             "<cmd>Trouble diagnostics toggle<cr>",
-            desc = "Diagnostics (Trouble)",
+            desc = "Trouble Diagnostics (Workspace)",
         },
         {
             "<leader>xx",
             "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-            desc = "Buffer Diagnostics (Trouble)",
+            desc = "Trouble Diagnostics (Buffer)",
         },
         {
             "<leader>cs",
             "<cmd>Trouble symbols toggle focus=false auto_jump=true win.size=0.4 win.border=single<cr>",
-            desc = "Symbols (Trouble)",
+            desc = "Trouble Symbols",
         },
         {
 
