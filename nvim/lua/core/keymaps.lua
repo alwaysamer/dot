@@ -6,6 +6,7 @@ vim.keymap.set("n", "<C-i>", ":bp<CR>", { silent = true, desc = "Buffer Previous
 vim.keymap.set("n", "<C-o>", ":bn<CR>", { silent = true, desc = "Buffer Next" })
 vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
+vim.keymap.set("n", "<leader>od", "<cmd>vsplit ~/vaults/neovim/start.md<CR>", { silent = true, desc = "Notes Open" })
 vim.keymap.set("i", "<C-c>", "<ESC>", { silent = true })
 vim.keymap.set("n", "Q", "<nop>", { silent = true })
 vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, { silent = true, desc = "LSP Format Buffer" })
