@@ -19,6 +19,21 @@ return {
             desc = "Trouble Symbols",
         },
         {
+            "gD",
+            "<cmd>Trouble lsp_definitions toggle focus=false win.position=bottom<cr>",
+            desc = "LSP Definitions (Trouble)",
+        },
+        {
+            "gR",
+            "<cmd>Trouble lsp_references toggle focus=false win.position=bottom<cr>",
+            desc = "LSP References (Trouble)",
+        },
+        {
+            "gI",
+            "<cmd>Trouble lsp_implementations toggle focus=false win.position=bottom<cr>",
+            desc = "LSP References (Trouble)",
+        },
+        {
 
             "<c-j>",
             function()
