@@ -5,6 +5,7 @@ return {
     },
     config = function()
         require('fzf-lua').setup({
+            fzf_colors = true,
             winopts = {
                 border = "single",
                 preview = {
