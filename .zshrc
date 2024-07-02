@@ -3,6 +3,8 @@ setopt IGNORE_EOF
 
 bindkey '^j' autosuggest-execute
 bindkey '^ ' autosuggest-accept
+bindkey '^f' fzf-file-widget
+bindkey '^b' fzf-cd-widget
 
 if type brew &>/dev/null
 then
