@@ -111,6 +111,13 @@ return {
                     require('lspconfig').gopls.setup({
                         capabilities = lsp_capabilities,
                         on_attach = format,
+                        callback = function(ev)
+                            vim.lsp.start({
+                                name = "gopls",
+                                cmd = { "gopls", "serve" },
+                                root_dir = vim.fs.root(ev.bf, { "go.mod" }),
+                            })
+                        end,
                         settings = {
                             gopls = {
                                 hints = {
