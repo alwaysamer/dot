@@ -14,10 +14,11 @@ return {
         {
             "<leader>cq",
             function()
-                local input = vim.ui.input("Quick Chat: ", nil)
-                if input ~= "" then
-                    require("CopilotChat").ask(input)
-                end
+                local input = vim.ui.input({ "Quick Chat: " }, function(input)
+                    if input ~= "" then
+                        require("CopilotChat").ask(input)
+                    end
+                end)
             end,
             desc = "CopilotChat Quick Chat",
             mode = { "n", "v" },
@@ -41,7 +42,7 @@ return {
             auto_follow_cursor = true,
             auto_insert_mode = false,
             clear_chat_on_new_prompt = false,
-            highlight_selection = true,
+            highlight_selection = false,
             context = 'buffers',
             history_path = vim.fn.stdpath('data') .. '/copilotchat_history',
 

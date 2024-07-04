@@ -9,7 +9,7 @@ return {
                 title_pos = "center",
                 start_in_insert = true,
                 border = "single",
-                relative = "cursor",
+                relative = "editor",
                 prefer_width = 40,
                 width = nil,
                 max_width = { 140, 0.9 },
