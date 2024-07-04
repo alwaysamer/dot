@@ -6,13 +6,19 @@ return {
     config = function()
         local fzf = require('fzf-lua')
         fzf.setup({
-            fzf_colors = true,
             winopts = {
                 border = "single",
                 preview = {
+                    title = false,
                     scrollbar = false,
                 }
             },
+            hls = {
+                border = "FloatBorder",
+                normal = "NONE",
+                preview_normal = "NONE",
+                preview_border = "FloatBorder",
+            }
         })
         fzf.register_ui_select()
 
