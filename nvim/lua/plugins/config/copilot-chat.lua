@@ -14,7 +14,7 @@ return {
         {
             "<leader>cq",
             function()
-                local input = vim.ui.input({ "Quick Chat: " }, function(input)
+                vim.ui.input({ "Quick Chat: " }, function(input)
                     if input ~= "" then
                         require("CopilotChat").ask(input)
                     end
@@ -33,7 +33,7 @@ return {
     config = function()
         require("CopilotChat").setup {
             model = 'gpt-4',
-            question_header = '## Amer ',
+            question_header = '## Me ',
             answer_header = '## Copilot ',
             error_header = '## Error ',
             separator = '───',
@@ -41,15 +41,15 @@ return {
             show_help = false,
             auto_follow_cursor = true,
             auto_insert_mode = false,
-            clear_chat_on_new_prompt = false,
+            clear_chat_on_new_prompt = true,
             highlight_selection = false,
             context = 'buffers',
             history_path = vim.fn.stdpath('data') .. '/copilotchat_history',
 
             window = {
                 layout = 'float',
-                width = 0.5,
-                height = 0.5,
+                width = 0.85,
+                height = 0.85,
                 relative = 'editor',
                 border = 'single',
                 title = 'Copilot Chat',

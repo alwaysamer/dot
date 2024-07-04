@@ -37,7 +37,7 @@ return {
         vim.keymap.set("n", "<leader>km", "<cmd>lua require('fzf-lua').keymaps({ previewer=false })<CR>",
             { silent = true, desc = "Fuzzy Keymaps" })
         vim.keymap.set("n", "gC", "<cmd>FzfLua lsp_code_actions<cr>",
-            { silent = true, desc = "LSP Show Code Actions" })
+            { silent = true, desc = "Fuzzy Show Code Actions" })
         vim.keymap.set({ "i" }, "<C-x><C-f>",
             function()
                 require("fzf-lua").complete_file({

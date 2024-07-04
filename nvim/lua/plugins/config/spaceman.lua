@@ -13,7 +13,7 @@ return {
             sort_by_recent = true,
             use_default_keymaps = false,
             use_default_hooks = true,
-            use_sessions = false,
+            use_sessions = true,
             rename_function = nil,
             adapter = "vim-ui",
             hooks = {
