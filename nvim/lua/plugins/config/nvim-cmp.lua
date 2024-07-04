@@ -3,7 +3,6 @@ return {
     event = "InsertEnter",
     dependencies = {
         "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "L3MON4D3/LuaSnip",
         "onsails/lspkind.nvim",
@@ -124,15 +123,6 @@ return {
             sources = {
                 { name = "buffer" },
             },
-        })
-
-        cmp.setup.cmdline(":", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({
-                { name = "path" },
-            }, {
-                { name = "cmdline" },
-            }),
         })
 
         cmp.event:on(

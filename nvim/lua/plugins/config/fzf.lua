@@ -4,7 +4,8 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     config = function()
-        require('fzf-lua').setup({
+        local fzf = require('fzf-lua')
+        fzf.setup({
             fzf_colors = true,
             winopts = {
                 border = "single",
@@ -13,9 +14,9 @@ return {
                 }
             },
         })
-        require('fzf-lua').register_ui_select()
+        fzf.register_ui_select()
 
-        local config = require('fzf-lua.config')
+        local config = fzf.config
         local actions = require('trouble.sources.fzf').actions
         config.defaults.actions.files["ctrl-t"] = actions.open
 
