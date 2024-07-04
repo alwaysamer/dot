@@ -7,6 +7,7 @@ return {
         "L3MON4D3/LuaSnip",
         "onsails/lspkind.nvim",
         'hrsh7th/cmp-nvim-lsp',
+        "zbirenbaum/copilot-cmp",
         {
             'windwp/nvim-autopairs',
             event = "InsertEnter",
@@ -18,6 +19,7 @@ return {
         local cmp = require("cmp")
         local kind = require("lspkind")
         local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+        require("copilot_cmp").setup()
 
         kind.init({
             symbol_map = {

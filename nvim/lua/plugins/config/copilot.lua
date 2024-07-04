@@ -3,9 +3,6 @@ return {
     cmd = "Copilot",
     dependencies = {
         {
-            "zbirenbaum/copilot-cmp",
-        },
-        {
             "CopilotC-Nvim/CopilotChat.nvim",
             branch = "canary",
             dependencies = {
@@ -32,6 +29,5 @@ return {
             copilot_node_command = 'node',
             server_opts_overrides = {},
         })
-        require("copilot_cmp").setup()
     end,
 }
