@@ -1,25 +1,8 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
-        { 'williamboman/mason.nvim', },
         { 'williamboman/mason-lspconfig.nvim' },
-        {
-            'windwp/nvim-autopairs',
-            event = "InsertEnter",
-            config = true
-
-        },
-        { "jay-babu/mason-nvim-dap.nvim" },
-        { 'onsails/lspkind.nvim' },
-        { 'hrsh7th/nvim-cmp' },
-        {
-            'Bekaboo/dropbar.nvim',
-        },
         { 'hrsh7th/cmp-nvim-lsp' },
-        {
-            'L3MON4D3/LuaSnip',
-            build = "make install_jsregexp",
-        },
         { 'folke/neodev.nvim' },
     },
     config = function()
@@ -46,8 +29,6 @@ return {
                 on_attach = format,
             })
         end
-        require('mason').setup({})
-        require('mason-nvim-dap').setup()
         require('mason-lspconfig').setup({
             automatic_installation = true,
             ensure_installed = {
@@ -130,115 +111,6 @@ return {
             },
         })
 
-        require('lspconfig').gleam.setup({})
-
-        local kind = require('lspkind')
-        kind.init({
-            symbol_map = {
-                Copilot = "",
-            },
-        })
-        vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { link = "@constructor" })
-
-        local cmp = require('cmp')
-
-        cmp.setup({
-            sorting = {
-                priority_weight = 2,
-                comparators = {
-                    require("copilot_cmp.comparators").prioritize,
-                    cmp.config.compare.offset,
-                    cmp.config.compare.exact,
-                    cmp.config.compare.score,
-                    cmp.config.compare.recently_used,
-                    cmp.config.compare.locality,
-                    cmp.config.compare.kind,
-                    cmp.config.compare.sort_text,
-                    cmp.config.compare.length,
-                    cmp.config.compare.order,
-                }
-            },
-            formatting = {
-                fields = { 'kind', 'abbr', 'menu' },
-                format = kind.cmp_format({
-                    menu = {},
-                    mode = 'symbol',
-                    maxwidth = 20,
-                    ellipsis_char = '…',
-                    show_labelDetails = true,
-                    before = function(_, vim_item)
-                        vim_item.menu = nil
-                        return vim_item
-                    end
-                }),
-            },
-            view = {
-                entries = {
-                    follow_cursor = true
-                },
-                docs = {
-                    auto_open = false,
-                },
-            },
-            mapping = {
-                ["<c-space>"] = cmp.mapping {
-                    i = cmp.mapping.complete(),
-                },
-                ['<C-g>'] = function()
-                    if cmp.visible_docs() then
-                        cmp.close_docs()
-                    else
-                        cmp.open_docs()
-                    end
-                end,
-                ["<TAB>"] = cmp.mapping {
-                    i = cmp.mapping.confirm {
-                        behavior = cmp.ConfirmBehavior.Insert,
-                        select = true,
-                    },
-                },
-                ["<c-n>"] = cmp.mapping {
-                    i = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-                },
-                ["<c-p>"] = cmp.mapping {
-                    i = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-                },
-            },
-            completion = {
-                autcomplete = true,
-                completeopt = 'menu,menuone,noinsert',
-            },
-            snippet = {
-                expand = function(args)
-                    require('luasnip').lsp_expand(args.body)
-                end,
-            },
-            preselect = cmp.PreselectMode.None,
-            window = {
-                completion = {
-                    border = "single",
-                    scrollbar = false,
-                },
-                documentation = {
-                    border = "single",
-                    scrollbar = true,
-                    maxwidth = 80,
-                    maxheight = 40,
-                },
-            },
-            sources = cmp.config.sources({
-                { name = "copilot",  group_index = 2 },
-                { name = 'nvim_lsp', group_index = 2 },
-                { name = 'luasnip',  group_index = 2 },
-            })
-        })
-
-
-        local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-        cmp.event:on(
-            'confirm_done',
-            cmp_autopairs.on_confirm_done()
-        )
         vim.api.nvim_create_autocmd('LspAttach', {
             desc = 'LSP actions',
             callback = function(event)
