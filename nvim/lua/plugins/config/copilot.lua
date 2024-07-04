@@ -2,10 +2,16 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     dependencies = {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-            require("copilot_cmp").setup()
-        end
+        {
+            "zbirenbaum/copilot-cmp",
+        },
+        {
+            "CopilotC-Nvim/CopilotChat.nvim",
+            branch = "canary",
+            dependencies = {
+                { "nvim-lua/plenary.nvim" },
+            },
+        },
     },
     event = "InsertEnter",
     config = function()
@@ -26,5 +32,6 @@ return {
             copilot_node_command = 'node',
             server_opts_overrides = {},
         })
+        require("copilot_cmp").setup()
     end,
 }
