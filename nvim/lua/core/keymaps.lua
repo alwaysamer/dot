@@ -9,7 +9,5 @@ vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 vim.keymap.set("n", "<leader>od", "<cmd>vsplit ~/vaults/neovim/start.md<CR>", { silent = true, desc = "Notes Open" })
 vim.keymap.set("i", "<C-c>", "<ESC>", { silent = true })
 vim.keymap.set("n", "Q", "<nop>", { silent = true })
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { silent = true, desc = "Buffer Replace" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Line Move Down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Line Move Up" })

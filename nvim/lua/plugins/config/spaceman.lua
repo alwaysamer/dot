@@ -24,7 +24,5 @@ return {
             data_path = vim.fn.stdpath("data") .. "/spaceman_data.json",
             sessions_path = vim.fn.stdpath("data") .. "/sessions",
         })
-        vim.keymap.set("n", "<leader>sp", "<cmd>Spaceman<CR>",
-            { noremap = true, silent = true, desc = "Spaceman Toggle" })
     end,
 }
