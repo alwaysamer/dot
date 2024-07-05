@@ -8,15 +8,15 @@ end
 
 config.font_size = 25.0
 config.line_height = 1.2
-config.font = wezterm.font_with_fallback{
-        'FiraCode Nerd Font',
-        'Source Code Pro',
-    }
+config.font = wezterm.font_with_fallback {
+    'FiraCode Nerd Font',
+    'Source Code Pro',
+}
 
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
-config.initial_rows = 40
-config.initial_cols = 150
+config.initial_rows = 45
+config.initial_cols = 180
 
 config.window_close_confirmation = "NeverPrompt"
 
@@ -31,7 +31,7 @@ config.window_padding = {
 }
 
 config.colors = require("color")
-config.window_background_opacity = 0.60
+config.window_background_opacity = 0.75
 config.macos_window_background_blur = 40
 
 return config
