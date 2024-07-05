@@ -15,7 +15,7 @@ return {
             "<leader>cq",
             function()
                 vim.ui.input({ "Quick Chat: " }, function(input)
-                    if input ~= "" then
+                    if input ~= "" and input ~= nil then
                         require("CopilotChat").ask(input)
                     end
                 end)
