@@ -22,6 +22,7 @@ export PATH="$HOME/flutter/bin:$PATH"
 export PATH="$PATH:/Users/amer/.local/bin"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 
 eval "$(fzf --zsh)"
 eval $(thefuck --alias)
@@ -46,6 +47,7 @@ _fzf_compgen_dir() {
 }
 
 alias v="nvim"
+alias lg="lazygit"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias cd="z"
 alias y="yazi"
