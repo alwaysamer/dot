@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>s", ":w<cr>", { silent = true, desc = "Save Buffer" })
 vim.keymap.set("n", "<leader>q", ":bd<CR>", { silent = true, desc = "Buffer Close" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true })

@@ -21,7 +21,8 @@ return {
             dashboard.button("n", "  > New file", ":silent ene <BAR> startinsert <CR>"),
             dashboard.button("r", "  > Recent files", "<cmd>lua require('fzf-lua').oldfiles()<CR>"),
             dashboard.button("p", "  > Projects", "<cmd>Spaceman<CR>"),
-            dashboard.button("d", "  > Notes", ":e ~/vaults/neovim/start.md<CR>"),
+            dashboard.button("c", "  > Dotfiles",
+                "<cmd>lua require('spaceman.workspace').open_workspace('~/source/dot')<CR>"),
             dashboard.button("q", "󰩈  > Quit NVIM", ":silent qa<CR>"),
         }
 

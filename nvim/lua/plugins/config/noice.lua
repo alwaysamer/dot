@@ -3,12 +3,8 @@ return {
     event = "VeryLazy",
     dependencies = {
         "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
     },
     config = function()
-        require("notify").setup({
-            level = vim.log.levels.INFO,
-        })
         require("noice").setup({
             cmdline = {
                 enabled = true,
@@ -70,8 +66,7 @@ return {
                 },
             },
             notify = {
-                enabled = true,
-                view = "notify",
+                enabled = false,
             },
             lsp = {
                 progress = {

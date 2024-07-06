@@ -5,11 +5,6 @@ return {
             directories = {
                 "~/source"
             },
-            workspaces = {
-                { "nvim-data",      "~/.local/share/nvim" },
-                { "nvim-config",    "~/.config/nvim" },
-                { "wezterm-config", "~/.config/wezterm" }
-            },
             sort_by_recent = true,
             use_default_keymaps = false,
             use_default_hooks = true,

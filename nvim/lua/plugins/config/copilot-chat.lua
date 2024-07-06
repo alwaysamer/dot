@@ -46,6 +46,11 @@ return {
             context = 'buffers',
             history_path = vim.fn.stdpath('data') .. '/copilotchat_history',
 
+            mappings = {
+                complete = {
+                    insert = ''
+                },
+            },
             window = {
                 layout = 'float',
                 width = 0.85,
@@ -57,5 +62,6 @@ return {
                 zindex = 1,
             },
         }
+        require("CopilotChat.integrations.cmp").setup()
     end
 }
