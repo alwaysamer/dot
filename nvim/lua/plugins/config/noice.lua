@@ -9,6 +9,8 @@ return {
         require("notify").setup({
             level = vim.log.levels.INFO,
             render = "wrapped-compact",
+            fps = 120,
+            timeout = 500,
             on_open = function(win)
                 local config = vim.api.nvim_win_get_config(win)
                 config.border = "single"
@@ -27,7 +29,10 @@ return {
                 view = "cmdline_popup",
             },
             messages = {
-                enabled = false,
+                enabled = true,
+                view = "notify",
+                view_error = "notify",
+                view_warn = "notify",
             },
             popupmenu = {
                 enabled = true,
