@@ -7,7 +7,7 @@ return {
     },
     config = function()
         require("notify").setup({
-            level = vim.log.levels.TRACE,
+            level = vim.log.levels.INFO,
             render = "wrapped-compact",
             on_open = function(win)
                 local config = vim.api.nvim_win_get_config(win)
