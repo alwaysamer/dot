@@ -25,46 +25,6 @@ return {
                     },
                 },
             },
-            commands = {
-                history = {
-                    view = "split",
-                    opts = { enter = true, format = "details" },
-                    filter = {
-                        any = {
-                            { event = "notify" },
-                            { error = true },
-                            { warning = true },
-                            { event = "msg_show", kind = { "" } },
-                            { event = "lsp",      kind = "message" },
-                        },
-                    },
-                },
-                last = {
-                    view = "popup",
-                    opts = { enter = true, format = "details" },
-                    filter = {
-                        any = {
-                            { event = "notify" },
-                            { error = true },
-                            { warning = true },
-                            { event = "msg_show", kind = { "" } },
-                            { event = "lsp",      kind = "message" },
-                        },
-                    },
-                    filter_opts = { count = 1 },
-                },
-                errors = {
-                    view = "popup",
-                    opts = { enter = true, format = "details" },
-                    filter = { error = true },
-                    filter_opts = { reverse = true },
-                },
-                all = {
-                    view = "split",
-                    opts = { enter = true, format = "details" },
-                    filter = {},
-                },
-            },
             notify = {
                 enabled = false,
             },
@@ -100,5 +60,9 @@ return {
                 lsp_doc_border = false,
             },
         })
+        vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { link = "NormalFloat" })
+        vim.api.nvim_set_hl(0, "NoiceCmdlinePopupTitle", { link = "FloatTitle" })
+        vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { link = "FloatBorder" })
+        vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSearch", { link = "FloatBorder" })
     end
 }

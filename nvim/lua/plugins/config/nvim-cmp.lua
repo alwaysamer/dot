@@ -7,6 +7,7 @@ return {
         "L3MON4D3/LuaSnip",
         "onsails/lspkind.nvim",
         'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-path',
         "zbirenbaum/copilot-cmp",
         {
             'windwp/nvim-autopairs',
@@ -125,6 +126,20 @@ return {
             sources = {
                 { name = "buffer" },
             },
+        })
+
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = 'path' }
+            }, {
+                {
+                    name = 'cmdline',
+                    option = {
+                        ignore_cmds = { 'Man', '!' }
+                    }
+                }
+            })
         })
 
         cmp.event:on(
