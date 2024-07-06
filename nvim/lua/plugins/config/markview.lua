@@ -3,7 +3,7 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
-    event = "BufRead *.md",
+    ft = "markdown",
     config = function()
         require("markview").setup();
     end
