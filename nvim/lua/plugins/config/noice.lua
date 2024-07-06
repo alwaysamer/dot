@@ -22,6 +22,13 @@ return {
                 backend = "cmp",
                 kind_icons = {},
             },
+            views = {
+                cmdline_popup = {
+                    border = {
+                        style = "single",
+                    },
+                },
+            },
             commands = {
                 history = {
                     view = "split",
