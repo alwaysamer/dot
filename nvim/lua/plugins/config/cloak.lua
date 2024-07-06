@@ -1,5 +1,6 @@
 return {
     "laytan/cloak.nvim",
+    event = "BufRead *.env*",
     config = function()
         require("cloak").setup({
             enabled = true,
@@ -8,10 +9,7 @@ return {
             patterns = {
                 {
                     file_pattern = {
-                        ".env*",
-                        "*env*",
-                        "wrangler.toml",
-                        ".dev.vars",
+                        "*.env*",
                     },
                     cloak_pattern = "=.+"
                 },

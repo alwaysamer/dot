@@ -14,11 +14,6 @@ return {
             desc = "Trouble Diagnostics (Buffer)",
         },
         {
-            "<leader>cs",
-            "<cmd>Trouble symbols toggle focus=false auto_jump=true win.size=0.4 win.border=single<cr>",
-            desc = "Trouble Symbols",
-        },
-        {
             "gD",
             "<cmd>Trouble lsp_definitions toggle focus=false win.position=bottom<cr>",
             desc = "LSP Definitions (Trouble)",

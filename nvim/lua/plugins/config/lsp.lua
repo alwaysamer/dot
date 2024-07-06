@@ -5,6 +5,7 @@ return {
         { 'hrsh7th/cmp-nvim-lsp' },
         { 'folke/neodev.nvim' },
     },
+    event = "BufReadPre",
     config = function()
         require("neodev").setup({
             library = { types = true, plugins = { "neotest" } },
