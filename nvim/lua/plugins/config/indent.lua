@@ -3,9 +3,12 @@ return {
     main = "ibl",
     opts = {},
     config = function()
+        vim.api.nvim_set_hl(0, "IblScope", { fg = "#ffffff" })
         require("ibl").setup({
             scope = {
-                enabled = false,
+                enabled = true,
+                show_start = false,
+                show_end = false,
             },
         })
         local indent_blankline_augroup = vim.api.nvim_create_augroup("indent_blankline_augroup", { clear = true })
