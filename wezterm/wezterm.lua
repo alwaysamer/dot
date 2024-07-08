@@ -6,7 +6,7 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.font_size = 25.0
+config.font_size = 23
 config.line_height = 1.2
 config.font = wezterm.font_with_fallback {
     'FiraCode Nerd Font',
