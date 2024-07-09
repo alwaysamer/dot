@@ -6,7 +6,7 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.font_size = 23
+config.font_size = 20
 config.line_height = 1.2
 config.font = wezterm.font_with_fallback {
     'FiraCode Nerd Font',
@@ -15,8 +15,6 @@ config.font = wezterm.font_with_fallback {
 
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
-config.initial_rows = 45
-config.initial_cols = 180
 
 config.window_close_confirmation = "NeverPrompt"
 
