@@ -115,10 +115,12 @@ return {
         vim.api.nvim_create_autocmd('LspAttach', {
             desc = 'LSP actions',
             callback = function()
-                vim.keymap.set("n", "gN", function() vim.lsp.buf.rename() end,
+                vim.keymap.set("n", "gn", function() vim.lsp.buf.rename() end,
                     { silent = true, desc = "LSP Rename" })
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end,
                     { silent = true, desc = "LSP Toggle Signaure-Help" })
+                vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end,
+                    { silent = true, desc = "LSP Go to definition" })
             end
         })
 

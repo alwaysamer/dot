@@ -9,6 +9,8 @@ return {
         require("notify").setup({
             level = vim.log.levels.INFO,
             render = "wrapped-compact",
+            max_width = 40,
+            max_height = 40,
             fps = 120,
             timeout = 500,
             on_open = function(win)

@@ -22,10 +22,6 @@ return {
         })
         fzf.register_ui_select()
 
-        local config = fzf.config
-        local actions = require('trouble.sources.fzf').actions
-        config.defaults.actions.files["ctrl-t"] = actions.open
-
         vim.keymap.set("n", "<c-f>", "<cmd>lua require('fzf-lua').files()<CR>",
             { silent = true, desc = "Fuzzy Files" })
         vim.keymap.set("n", "<leader>ps", "<cmd>lua require('fzf-lua').live_grep()<CR>",
@@ -36,8 +32,72 @@ return {
             { silent = true, desc = "Fuzzy Helptags" })
         vim.keymap.set("n", "<leader>km", "<cmd>lua require('fzf-lua').keymaps({ previewer=false })<CR>",
             { silent = true, desc = "Fuzzy Keymaps" })
-        vim.keymap.set("n", "gC", "<cmd>FzfLua lsp_code_actions<cr>",
+        vim.keymap.set("n", "gc", function()
+                require('fzf-lua').lsp_code_actions({
+                    winopts = {
+                        split = "belowright new",
+                        preview = {
+                            layout = "horizontal",
+                        }
+                    },
+                })
+            end,
             { silent = true, desc = "Fuzzy Show Code Actions" })
+        vim.keymap.set("n", "gr", function()
+                require('fzf-lua').lsp_references({
+                    winopts = {
+                        split = "belowright new",
+                        preview = {
+                            layout = "horizontal",
+                        }
+                    },
+                })
+            end,
+            { silent = true, desc = "Fuzzy Show LSP References" })
+        vim.keymap.set("n", "gD", function()
+                require('fzf-lua').lsp_definitions({
+                    winopts = {
+                        split = "belowright new",
+                        preview = {
+                            layout = "horizontal",
+                        }
+                    },
+                })
+            end,
+            { silent = true, desc = "Fuzzy Show LSP Definitions" })
+        vim.keymap.set("n", "gi", function()
+                require('fzf-lua').lsp_implementations({
+                    winopts = {
+                        split = "belowright new",
+                        preview = {
+                            layout = "horizontal",
+                        }
+                    },
+                })
+            end,
+            { silent = true, desc = "Fuzzy Show LSP Implementations" })
+        vim.keymap.set("n", "xx", function()
+                require('fzf-lua').lsp_document_diagnostics({
+                    winopts = {
+                        split = "belowright new",
+                        preview = {
+                            layout = "horizontal",
+                        }
+                    },
+                })
+            end,
+            { silent = true, desc = "Fuzzy Show LSP Document Diagnostics" })
+        vim.keymap.set("n", "xx", function()
+                require('fzf-lua').lsp_workspace_diagnostics({
+                    winopts = {
+                        split = "belowright new",
+                        preview = {
+                            layout = "horizontal",
+                        }
+                    },
+                })
+            end,
+            { silent = true, desc = "Fuzzy Show LSP Workspace Diagnostics" })
         vim.keymap.set({ "i" }, "<C-x><C-f>",
             function()
                 require("fzf-lua").complete_file({
