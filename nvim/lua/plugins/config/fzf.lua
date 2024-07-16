@@ -9,6 +9,7 @@ return {
             winopts = {
                 border = "single",
                 preview = {
+                    layout = 'horizontal',
                     title = false,
                     scrollbar = false,
                 }

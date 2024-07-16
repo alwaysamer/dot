@@ -35,6 +35,8 @@ return {
                 view = "notify",
                 view_error = "notify",
                 view_warn = "notify",
+                view_search = false,
+                view_history = false,
             },
             popupmenu = {
                 enabled = true,
