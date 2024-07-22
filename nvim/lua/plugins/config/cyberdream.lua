@@ -13,5 +13,6 @@ return {
             },
         })
         vim.cmd.colorscheme('cyberdream')
+        vim.api.nvim_set_hl(0, "PmenuSel", { fg = "black", bg = "white" })
     end
 }

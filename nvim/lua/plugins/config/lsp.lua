@@ -41,6 +41,19 @@ return {
             },
             handlers = {
                 default_setup,
+                lua_ls = function()
+                    require('lspconfig').lua_ls.setup({
+                        capabilities = lsp_capabilities,
+                        on_attach = format,
+                        settings = {
+                            Lua = {
+                                hint = {
+                                    enable = true
+                                }
+                            }
+                        }
+                    })
+                end,
                 tsserver = function()
                     require('lspconfig').tsserver.setup({
                         capabilities = lsp_capabilities,
@@ -121,6 +134,9 @@ return {
                     { silent = true, desc = "LSP Toggle Signaure-Help" })
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end,
                     { silent = true, desc = "LSP Go to definition" })
+                vim.keymap.set("n", "<leader>vi", function()
+                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+                end, { desc = "LSP Toggle Inlay-Hints" })
             end
         })
 
@@ -154,6 +170,6 @@ return {
             local hl = "DiagnosticSign" .. type
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
-        vim.lsp.inlay_hint.enable(true)
+        vim.lsp.inlay_hint.enable(false)
     end
 }

@@ -31,6 +31,7 @@ return {
                         symbols = { modified = "  ", readonly = "", unnamed = "" },
                     },
                 },
+
                 lualine_x = {},
                 lualine_y = {
                     {
@@ -40,7 +41,6 @@ return {
                 },
                 lualine_z = {},
             },
-
             extensions = { "lazy", "mason", "oil", "fzf" },
         }
     end,
