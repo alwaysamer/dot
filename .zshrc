@@ -2,9 +2,8 @@ eval "$(starship init zsh)"
 setopt IGNORE_EOF
 
 bindkey '^j' autosuggest-execute
+bindkey -s '^f' "tmux-sessionizer\n"
 bindkey '^ ' autosuggest-accept
-bindkey '^f' fzf-file-widget
-bindkey '^b' fzf-cd-widget
 
 if type brew &>/dev/null
 then
@@ -18,11 +17,12 @@ source ~/source/fzf-git.sh/fzf-git.sh
 export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PATH="$HOME/flutter/bin:$PATH"
 export PATH="$PATH:/Users/amer/.local/bin"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+export PATH="$HOME/.local/scripts:$PATH"
+
 
 eval "$(fzf --zsh)"
 eval $(thefuck --alias)
@@ -50,7 +50,6 @@ alias v="nvim"
 alias lg="lazygit"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias cd="z"
-alias y="yazi"
 alias g="git"
 alias ga="git add ."
 alias gp="git pull"

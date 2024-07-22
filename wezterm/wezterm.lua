@@ -15,7 +15,7 @@ config.font = wezterm.font_with_fallback {
 
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
-
+config.scrollback_lines = 3500
 config.window_close_confirmation = "NeverPrompt"
 
 config.use_fancy_tab_bar = false
