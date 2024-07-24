@@ -2,7 +2,6 @@ eval "$(starship init zsh)"
 setopt IGNORE_EOF
 
 bindkey '^j' autosuggest-execute
-bindkey -s '^f' "tmux-sessionizer\n"
 bindkey '^ ' autosuggest-accept
 
 if type brew &>/dev/null
