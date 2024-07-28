@@ -1,7 +1,6 @@
 return {
     "OXY2DEV/markview.nvim",
-        "nvim-tree/nvim-web-devicons",
-    },
+    dependencies = { "echasnovski/mini.icons" },
     ft = "markdown",
     config = function()
         require("markview").setup();
