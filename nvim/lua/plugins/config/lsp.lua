@@ -124,6 +124,10 @@ return {
                 end,
             },
         })
+        require('lspconfig').gleam.setup({
+            capabilities = lsp_capabilities,
+            on_attach = format,
+        })
 
         vim.api.nvim_create_autocmd('LspAttach', {
             desc = 'LSP actions',
