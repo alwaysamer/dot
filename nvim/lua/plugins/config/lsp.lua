@@ -136,8 +136,6 @@ return {
                     { silent = true, desc = "LSP Rename" })
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end,
                     { silent = true, desc = "LSP Toggle Signaure-Help" })
-                vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end,
-                    { silent = true, desc = "LSP Go to definition" })
                 vim.keymap.set("n", "<leader>vi", function()
                     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
                 end, { desc = "LSP Toggle Inlay-Hints" })

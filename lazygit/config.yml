@@ -6,24 +6,24 @@ gui:
     mouseEvents: false
 
     theme:
-        activeBorderColor:
-            - "#5ef1ff"
-        inactiveBorderColor:
-            - "#ffffff"
-        searchingActiveBorderColor:
-            - "#ff5ef1"
-        optionsTextColor:
-            - "#3c4048"
-        selectedLineBgColor:
-            - "#3c4048"
-        cherryPickedCommitBgColor:
-            - "#3c4048"
-        cherryPickedCommitFgColor:
-            - "#ff5ea0"
-        unstagedChangesColor:
-            - "#ffbd5e"
-        defaultFgColor:
-            - "#ffffff"
+      activeBorderColor:
+          - "#5ef1ff"
+      inactiveBorderColor:
+          - "#ffffff"
+      searchingActiveBorderColor:
+          - "#ff5ef1"
+      optionsTextColor:
+          - "#3c4048"
+      selectedLineBgColor:
+          - "#3c4048"
+      cherryPickedCommitBgColor:
+          - "#3c4048"
+      cherryPickedCommitFgColor:
+          - "#ff5ea0"
+      unstagedChangesColor:
+          - "#ffbd5e"
+      defaultFgColor:
+          - "#ffffff"
 git:
     parseEmoji: true
     paging:

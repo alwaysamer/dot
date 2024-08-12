@@ -5,13 +5,19 @@ local config = {}
 if wezterm.config_builder then
     config = wezterm.config_builder()
 end
+config.front_end = "Software"
 
-config.font_size = 20
+
+config.font_size = 18
 config.line_height = 1.2
-config.font = wezterm.font_with_fallback {
+
+config.font = wezterm.font(
     'FiraCode Nerd Font',
-    'Source Code Pro',
-}
+    { weight = 'Regular' }
+)
+
+config.underline_position = -4
+config.underline_thickness = 3
 
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false

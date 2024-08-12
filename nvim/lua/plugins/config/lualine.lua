@@ -32,7 +32,13 @@ return {
                     },
                 },
 
-                lualine_x = {},
+                lualine_x = {
+                    {
+                        require("lazy.status").updates,
+                        cond = require("lazy.status").has_updates,
+                        color = vim.api.nvim_get_hl(0, { name = "@string" }),
+                    }
+                },
                 lualine_y = {
                     {
                         "location",
