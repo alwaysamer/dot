@@ -17,7 +17,7 @@ config.font = wezterm.font(
 )
 
 config.underline_position = -4
-config.underline_thickness = 3
+config.underline_thickness = 2
 
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
