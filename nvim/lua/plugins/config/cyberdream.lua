@@ -5,6 +5,7 @@ return {
     config = function()
         require("cyberdream").setup({
             transparent = true,
+            borderless_telescope = false,
             italic_comments = true,
             hide_fillchars = true,
             terminal_colors = true,
@@ -13,7 +14,6 @@ return {
             },
         })
         vim.cmd.colorscheme('cyberdream')
-        vim.api.nvim_set_hl(0, "PmenuSel", { fg = "black", bg = "white" })
         vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#ffffff" })
     end
 }

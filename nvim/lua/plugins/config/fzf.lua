@@ -12,12 +12,6 @@ return {
                     scrollbar = false,
                 }
             },
-            hls = {
-                border = "FloatBorder",
-                normal = "NONE",
-                preview_normal = "NONE",
-                preview_border = "FloatBorder",
-            }
         })
         fzf.register_ui_select()
 

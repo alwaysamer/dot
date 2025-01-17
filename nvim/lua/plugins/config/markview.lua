@@ -3,6 +3,13 @@ return {
     dependencies = { "echasnovski/mini.icons" },
     ft = "markdown",
     config = function()
-        require("markview").setup();
+        require("markview").setup({
+            links = {
+                enable = true,
+                internal_links = {
+                    enable = true,
+                }
+            }
+        });
     end
 }

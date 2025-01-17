@@ -62,5 +62,6 @@ return {
             },
         })
         vim.keymap.set("n", "<leader>pv", ":Oil --float<CR>", { silent = true, desc = "Oil Toggle" })
+        vim.api.nvim_set_keymap('n', '<leader>ov', ':vsplit<CR>:Oil<CR>', { noremap = true, silent = true })
     end
 }
