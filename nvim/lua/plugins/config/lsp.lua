@@ -134,6 +134,8 @@ return {
             callback = function()
                 vim.keymap.set("n", "gn", function() vim.lsp.buf.rename() end,
                     { silent = true, desc = "LSP Rename" })
+                vim.keymap.set("n", "gc", function() vim.lsp.buf.code_action() end,
+                    { silent = true, desc = "LSP Code Actions" })
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end,
                     { silent = true, desc = "LSP Toggle Signaure-Help" })
                 vim.keymap.set("n", "<leader>vi", function()
