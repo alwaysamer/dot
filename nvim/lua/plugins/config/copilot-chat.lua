@@ -1,7 +1,10 @@
 return {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
-    cmd = "CopilotChat",
+    build = "make tiktoken",
+    dependencies = {
+        { "github/copilot.vim" },
+        { "nvim-lua/plenary.nvim", branch = "master" },
+    },
     keys = {
         {
             "<leader>ca",
@@ -32,25 +35,12 @@ return {
     },
     config = function()
         require("CopilotChat").setup {
-            model = 'gpt-4',
-            question_header = '## Me ',
-            answer_header = '## Copilot ',
-            error_header = '## Error ',
-            separator = '───',
-            show_folds = false,
-            show_help = false,
-            auto_follow_cursor = true,
-            auto_insert_mode = false,
-            clear_chat_on_new_prompt = true,
-            highlight_selection = false,
-            context = 'buffers',
-            history_path = vim.fn.stdpath('data') .. '/copilotchat_history',
-
-            mappings = {
-                complete = {
-                    insert = ''
-                },
-            },
+            model = 'gpt-4o',
+            agent = 'copilot',
+            context = "buffers",
+            temperature = 0.1,
+            headless = false,
+            callback = nil,
             window = {
                 layout = 'float',
                 width = 0.85,
@@ -60,6 +50,29 @@ return {
                 title = 'Copilot Chat',
                 footer = nil,
                 zindex = 1,
+            },
+            show_help = false,
+            show_folds = false,
+            highlight_selection = false,
+            highlight_headers = true,
+            auto_follow_cursor = true,
+            auto_insert_mode = false,
+            insert_at_end = false,
+            clear_chat_on_new_prompt = false,
+            debug = false,
+            log_level = 'info',
+            proxy = nil,
+            allow_insecure = false,
+            chat_autocomplete = true,
+            history_path = vim.fn.stdpath('data') .. '/copilotchat_history',
+            question_header = '## Me ',
+            answer_header = '## Copilot ',
+            error_header = '## Error ',
+            separator = '───',
+            mappings = {
+                complete = {
+                    insert = ''
+                },
             },
         }
         require("CopilotChat.integrations.cmp").setup()
