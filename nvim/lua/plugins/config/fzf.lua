@@ -8,6 +8,7 @@ return {
                 border = "single",
                 preview = {
                     layout = 'horizontal',
+                    hidden = true,
                     title = false,
                     scrollbar = false,
                 }
