@@ -22,10 +22,18 @@ return {
                 max_width = 50,
                 max_height = 0,
                 preview_split = "right",
-                border = "single",
                 win_options = {
                     winblend = 0,
                 },
+                override = function(conf)
+                    conf.width = 40
+                    conf.height = 20
+                    conf.row = 1
+                    conf.col = vim.o.columns - conf.width - 1
+                    conf.style = "minimal"
+                    conf.border = "single"
+                    return conf
+                end
             },
             keymaps = {
                 ["g?"] = "actions.show_help",
