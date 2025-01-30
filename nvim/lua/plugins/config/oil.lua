@@ -28,7 +28,7 @@ return {
                 override = function(conf)
                     conf.width = 40
                     conf.height = 20
-                    conf.row = 1
+                    conf.row = vim.o.lines - conf.height - 3
                     conf.col = vim.o.columns - conf.width - 1
                     conf.style = "minimal"
                     conf.border = "single"
