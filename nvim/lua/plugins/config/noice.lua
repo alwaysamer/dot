@@ -16,6 +16,7 @@ return {
                 view = "notify",
                 view_error = "notify",
                 view_warn = "notify",
+                view_search = false,
             },
             popupmenu = {
                 enabled = true,
@@ -63,9 +64,5 @@ return {
                 lsp_doc_border = false,
             },
         })
-        vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { link = "NormalFloat" })
-        vim.api.nvim_set_hl(0, "NoiceCmdlinePopupTitle", { link = "FloatTitle" })
-        vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { link = "FloatBorder" })
-        vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSearch", { link = "FloatBorder" })
     end
 }

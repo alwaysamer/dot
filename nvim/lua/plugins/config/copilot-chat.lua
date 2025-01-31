@@ -75,6 +75,5 @@ return {
                 },
             },
         }
-        require("CopilotChat.integrations.cmp").setup()
     end
 }

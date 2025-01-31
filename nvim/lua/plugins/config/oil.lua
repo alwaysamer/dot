@@ -69,6 +69,6 @@ return {
                 border = "single",
             },
         })
-        vim.keymap.set("n", "<leader>pv", ":Oil --float<CR>", { silent = true, desc = "Oil Toggle" })
+        vim.keymap.set("n", "<leader>pv", ":Oil<CR>", { silent = true, desc = "Oil Toggle" })
     end
 }

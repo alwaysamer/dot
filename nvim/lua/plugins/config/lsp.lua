@@ -2,7 +2,6 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
         { 'williamboman/mason-lspconfig.nvim' },
-        { 'hrsh7th/cmp-nvim-lsp' },
         { 'folke/neodev.nvim' },
     },
     event = "BufReadPre",
@@ -10,7 +9,6 @@ return {
         require("neodev").setup({
             library = { types = true, plugins = { "neotest" } },
         })
-        local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
         local format = function(client, bufnr)
             if client.supports_method("textDocument/formatting") then
@@ -24,9 +22,12 @@ return {
                 })
             end
         end
+
+
+
+
         local default_setup = function(server)
             require('lspconfig')[server].setup({
-                capabilities = lsp_capabilities,
                 on_attach = format,
             })
         end
@@ -43,7 +44,6 @@ return {
                 default_setup,
                 lua_ls = function()
                     require('lspconfig').lua_ls.setup({
-                        capabilities = lsp_capabilities,
                         on_attach = format,
                         settings = {
                             Lua = {
@@ -56,7 +56,6 @@ return {
                 end,
                 ts_ls = function()
                     require('lspconfig').ts_ls.setup({
-                        capabilities = lsp_capabilities,
                         on_attach = format,
                         settings = {
                             javascript = {
@@ -87,7 +86,6 @@ return {
                 end,
                 rust_analyzer = function()
                     require('lspconfig').rust_analyzer.setup({
-                        capabilities = lsp_capabilities,
                         on_attach = format,
                         settings = {
                             ["rust-analyzer"] = {
@@ -104,7 +102,6 @@ return {
                 end,
                 gopls = function()
                     require('lspconfig').gopls.setup({
-                        capabilities = lsp_capabilities,
                         on_attach = format,
                         root_dir = require('lspconfig').util.root_pattern("go.mod", "go.mod", ".git"),
                         settings = {
@@ -125,7 +122,6 @@ return {
             },
         })
         require('lspconfig').gleam.setup({
-            capabilities = lsp_capabilities,
             on_attach = format,
         })
 
@@ -138,9 +134,6 @@ return {
                     { silent = true, desc = "LSP Code Actions" })
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end,
                     { silent = true, desc = "LSP Toggle Signaure-Help" })
-                vim.keymap.set("n", "<leader>vi", function()
-                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
-                end, { desc = "LSP Toggle Inlay-Hints" })
             end
         })
 
