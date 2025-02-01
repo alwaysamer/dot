@@ -64,7 +64,7 @@ return {
             log_level = 'info',
             proxy = nil,
             allow_insecure = false,
-            chat_autocomplete = true,
+            chat_autocomplete = false,
             history_path = vim.fn.stdpath('data') .. '/copilotchat_history',
             question_header = '## Me ',
             answer_header = '## Copilot ',
