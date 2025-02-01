@@ -12,6 +12,9 @@ return {
     version = '*',
     config = function()
         require("blink.cmp").setup({
+            keymap = {
+                ['<TAB>'] = {'select_and_accept'},
+            },
             sources = {
                 default = { "lsp", "path", "snippets", "buffer", "copilot" },
                 providers = {

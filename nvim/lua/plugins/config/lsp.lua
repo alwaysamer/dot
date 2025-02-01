@@ -9,27 +9,9 @@ return {
         require("neodev").setup({
             library = { types = true, plugins = { "neotest" } },
         })
-        local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-        local format = function(client, bufnr)
-            if client.supports_method("textDocument/formatting") then
-                vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-                vim.api.nvim_create_autocmd("BufWritePre", {
-                    group = augroup,
-                    buffer = bufnr,
-                    callback = function()
-                        vim.lsp.buf.format()
-                    end
-                })
-            end
-        end
-
-
-
 
         local default_setup = function(server)
-            require('lspconfig')[server].setup({
-                on_attach = format,
-            })
+            require('lspconfig')[server].setup({})
         end
         require('mason-lspconfig').setup({
             automatic_installation = true,
@@ -42,87 +24,7 @@ return {
             },
             handlers = {
                 default_setup,
-                lua_ls = function()
-                    require('lspconfig').lua_ls.setup({
-                        on_attach = format,
-                        settings = {
-                            Lua = {
-                                hint = {
-                                    enable = true
-                                }
-                            }
-                        }
-                    })
-                end,
-                ts_ls = function()
-                    require('lspconfig').ts_ls.setup({
-                        on_attach = format,
-                        settings = {
-                            javascript = {
-                                inlayHints = {
-                                    includeInlayEnumMemberValueHints = true,
-                                    includeInlayFunctionLikeReturnTypeHints = true,
-                                    includeInlayFunctionParameterTypeHints = true,
-                                    includeInlayParameterNameHints = "all",
-                                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                                    includeInlayPropertyDeclarationTypeHints = true,
-                                    includeInlayVariableTypeHints = true,
-                                },
-                            },
-
-                            typescript = {
-                                inlayHints = {
-                                    includeInlayEnumMemberValueHints = true,
-                                    includeInlayFunctionLikeReturnTypeHints = true,
-                                    includeInlayFunctionParameterTypeHints = true,
-                                    includeInlayParameterNameHints = "all",
-                                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                                    includeInlayPropertyDeclarationTypeHints = true,
-                                    includeInlayVariableTypeHints = true,
-                                },
-                            },
-                        }
-                    })
-                end,
-                rust_analyzer = function()
-                    require('lspconfig').rust_analyzer.setup({
-                        on_attach = format,
-                        settings = {
-                            ["rust-analyzer"] = {
-                                inlayHints = {
-                                    enable = true,
-                                    chainingHints = true,
-                                    typeHints = true,
-                                    parameterHints = true,
-                                    maxLength = 80,
-                                },
-                            },
-                        },
-                    })
-                end,
-                gopls = function()
-                    require('lspconfig').gopls.setup({
-                        on_attach = format,
-                        root_dir = require('lspconfig').util.root_pattern("go.mod", "go.mod", ".git"),
-                        settings = {
-                            gopls = {
-                                hints = {
-                                    assignVariableTypes = true,
-                                    compositeLiteralFields = true,
-                                    compositeLiteralTypes = true,
-                                    constantValues = true,
-                                    functionTypeParameters = true,
-                                    parameterNames = true,
-                                    rangeVariableTypes = true,
-                                }
-                            },
-                        },
-                    })
-                end,
             },
-        })
-        require('lspconfig').gleam.setup({
-            on_attach = format,
         })
 
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -134,6 +36,9 @@ return {
                     { silent = true, desc = "LSP Code Actions" })
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end,
                     { silent = true, desc = "LSP Toggle Signaure-Help" })
+                vim.keymap.set("n", "gf", function()
+                    vim.lsp.buf.format()
+                end, { silent = true, desc = "LSP Format" })
             end
         })
 
@@ -167,6 +72,5 @@ return {
             local hl = "DiagnosticSign" .. type
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
-        vim.lsp.inlay_hint.enable(false)
     end
 }
