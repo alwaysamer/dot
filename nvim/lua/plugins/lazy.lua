@@ -14,7 +14,7 @@ require("lazy").setup("plugins.config", {
     change_detection = {
         notify = false,
     },
-    checker = { enabled = true },
+    checker = { enabled = true, notify = false, },
     ui = {
         border = "single"
     },
