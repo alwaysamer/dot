@@ -11,7 +11,6 @@ return {
                     { icon = " ", key = "f", desc = "Find File", action = ":FzfLua files" },
                     { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
                     { icon = " ", key = "g", desc = "Find Text", action = "<cmd>lua require('fzf-lua').live_grep()<CR>" },
-                    { icon = " ", key = "r", desc = "Recent Files", action = "<cmd>lua require('fzf-lua').oldfiles()<CR>" },
                     { icon = " ", key = "c", desc = "Config", action = "<cmd> lua require('fzf-lua').files({cwd = vim.fn.stdpath('config')})<CR>" },
                     { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
                     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
