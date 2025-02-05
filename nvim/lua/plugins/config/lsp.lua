@@ -2,14 +2,9 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
         { 'williamboman/mason-lspconfig.nvim' },
-        { 'folke/neodev.nvim' },
     },
     event = "BufReadPre",
     config = function()
-        require("neodev").setup({
-            library = { types = true, plugins = { "neotest" } },
-        })
-
         local default_setup = function(server)
             require('lspconfig')[server].setup({})
         end
