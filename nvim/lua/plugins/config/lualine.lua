@@ -2,13 +2,11 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function()
-        local colors = require("cyberdream.colors").default
-        local cyberdream = require("lualine.themes.cyberdream")
         return {
             options = {
                 component_separators = { left = " ", right = " " },
                 section_separators = { left = " ", right = " " },
-                theme = cyberdream,
+                theme = "auto",
                 globalstatus = true,
                 disabled_filetypes = { statusline = { "dashboard", "alpha" } },
             },
@@ -36,13 +34,11 @@ return {
                     {
                         require("lazy.status").updates,
                         cond = require("lazy.status").has_updates,
-                        color = vim.api.nvim_get_hl(0, { name = "@string" }),
                     }
                 },
                 lualine_y = {
                     {
                         "location",
-                        color = { fg = colors.cyan, bg = colors.none },
                     },
                 },
                 lualine_z = {},
