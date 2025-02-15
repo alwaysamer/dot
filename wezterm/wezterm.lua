@@ -32,7 +32,7 @@ config.window_padding = {
 }
 
 config.colors = require("color")
-config.window_background_opacity = 0.75
-config.macos_window_background_blur = 40
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 30
 
 return config
