@@ -19,5 +19,6 @@ return {
         vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions toggle<CR>", { silent = true })
         vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", { silent = true })
         vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle<CR>", { silent = true })
+        vim.keymap.set("n", "<leader>ss", "<cmd>Trouble symbols toggle win.position=bottom focus=true<CR>", {silent = true})
     end,
 }
