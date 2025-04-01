@@ -1,0 +1,43 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set NERDTree
+set commentary
+set easymotion
+set ReplaceWithRegister
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set incsearch
+set relativenumber 
+
+
+""" Mappings --------------------------------
+
+map <leader>d <Action>(Debug)
+map <leader>r <Action>(RenameElement)
+map <leader>g <Action>(Run)
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+map <leader><leader> <Action>(SwitchEditorTab)
+map <leader>pv :NERDTree<CR>
+map <C-i> <Action>(PreviousTab)
+map <C-o> <Action>(NextTab)
+map <C-f> <Action>(SearchEverywhere)
+
+imap <C-c> <ESC>
+
+map K <Action>(MoveLineUp)
+map J <Action>(MoveLineDown)
+
+
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
