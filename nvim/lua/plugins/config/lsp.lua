@@ -1,63 +1,72 @@
 return {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-        { 'williamboman/mason-lspconfig.nvim' },
-    },
-    event = "BufReadPre",
+    'williamboman/mason.nvim',
     config = function()
-        local default_setup = function(server)
-            require('lspconfig')[server].setup({})
-        end
-        require('mason-lspconfig').setup({
-            automatic_installation = true,
-            ensure_installed = {
-                'ts_ls',
-                'rust_analyzer',
-                'gopls',
-                'pylsp',
-                'lua_ls',
-            },
-            handlers = {
-                default_setup,
+        require("mason").setup({
+            ui = {
+                border = "single",
+                width = 0.7,
+                height = 0.7,
             },
         })
-
-        vim.api.nvim_create_autocmd('LspAttach', {
-            desc = 'LSP actions',
-            callback = function()
-                vim.keymap.set("n", "gn", function() vim.lsp.buf.rename() end,
-                    { silent = true, desc = "LSP Rename" })
-                vim.keymap.set("n", "gc", function() vim.lsp.buf.code_action() end,
-                    { silent = true, desc = "LSP Code Actions" })
-                vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end,
-                    { silent = true, desc = "LSP Toggle Signaure-Help" })
-                vim.keymap.set("n", "gf", function()
-                    vim.lsp.buf.format()
-                end, { silent = true, desc = "LSP Format" })
+        local on_attach = function(client, bufnr)
+            if client.supports_method("textDocument/signatureHelp") then
+                local custom_signature = function()
+                    local signature_opts = {
+                        max_width = 80,
+                        max_height = 40,
+                    }
+                    vim.lsp.buf.signature_help(signature_opts)
+                end
+                vim.api.nvim_buf_set_keymap(bufnr, 'i', '<C-h>', '', {
+                    noremap = true,
+                    silent = true,
+                    callback = custom_signature,
+                })
             end
+
+            if client.supports_method("textDocument/hover") then
+                local custom_hover = function()
+                    local hover_opts = {
+                        max_width = 80,
+                        max_height = 40,
+                    }
+                    vim.lsp.buf.hover(hover_opts)
+                end
+                vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '', {
+                    noremap = true,
+                    silent = true,
+                    callback = custom_hover,
+                })
+            end
+            vim.keymap.set("n", "gn", function() vim.lsp.buf.rename() end,
+                { silent = true, desc = "LSP Rename" })
+            vim.keymap.set("n", "gC", function() vim.lsp.buf.code_action() end,
+                { silent = true, desc = "LSP Code Actions" })
+            vim.keymap.set("n", "gf", function()
+                vim.lsp.buf.format()
+            end, { silent = true, desc = "LSP Format" })
+        end
+        vim.lsp.config(
+            '*',
+            {
+                on_attach = on_attach,
+            }
+        )
+
+        vim.lsp.enable({
+            "luals",
+            "docker_compose",
+            "dockerls",
+            "gopls",
+            "rust_analyzer",
+            "pylsp",
+            "yamlls",
+            "html",
+            "tsls"
         })
-
-        local _border = "single"
-
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-            vim.lsp.handlers.hover, {
-                max_width = 80,
-                maxheight = 40,
-                border = _border
-            }
-        )
-
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-            vim.lsp.handlers.signature_help, {
-                maxwidth = 80,
-                maxheight = 40,
-                border = _border
-            }
-        )
 
         vim.diagnostic.config({
             underline = true,
-            float = { border = _border },
             virtual_text = false,
             signs = true,
         })
