@@ -43,7 +43,7 @@ return {
                 },
                 lualine_z = {},
             },
-            extensions = { "lazy", "mason", "oil", "fzf" },
+            extensions = { "lazy", "mason", "oil", "fzf", "trouble" },
         }
     end,
 }
