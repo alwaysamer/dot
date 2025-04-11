@@ -27,8 +27,8 @@ return {
             if client.supports_method("textDocument/hover") then
                 local custom_hover = function()
                     local hover_opts = {
-                        max_width = 80,
-                        max_height = 40,
+                        max_width = 60,
+                        max_height = 10,
                     }
                     vim.lsp.buf.hover(hover_opts)
                 end
@@ -57,8 +57,11 @@ return {
             "luals",
             "docker_compose",
             "dockerls",
+            "cmake-language-server",
             "gopls",
+            "clangd",
             "rust_analyzer",
+            "jsonlsp",
             "pylsp",
             "yamlls",
             "html",
