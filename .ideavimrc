@@ -30,8 +30,8 @@ map <C-f> <Action>(SearchEverywhere)
 
 imap <C-c> <ESC>
 
-map K <Action>(MoveLineUp)
-map J <Action>(MoveLineDown)
+vmap K <Action>(MoveLineUp)
+vmap J <Action>(MoveLineDown)
 
 
 map <leader>s <Action>(SelectInProjectView)
