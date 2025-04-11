@@ -23,6 +23,14 @@ export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 export PATH="$HOME/.local/scripts:$PATH"
 
 
+export VULKAN_PATH="/Users/amer/VulkanSDK/1.4.309.0"
+export VULKAN_SDK=$VULKAN_PATH/macOS
+export PATH=$VULKAN_SDK/bin:$PATH
+export DYLD_LIBRARY_PATH=$VULKAN_SDK/lib:$DYLD_LIBRARY_PATH
+export VK_ICD_FILENAMES=$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json
+export VK_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
+
+
 eval "$(fzf --zsh)"
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
