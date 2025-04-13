@@ -1,34 +1,37 @@
 eval "$(starship init zsh)"
 setopt IGNORE_EOF
+if [[ $OSTYPE == darwin* ]]; then
+    echo "test"
+    if type brew &>/dev/null
+    then
+        FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    fi
+    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source ~/source/fzf-git.sh/fzf-git.sh
+
+    export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
+    export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+    export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+    export PATH="$PATH:/Users/amer/.local/bin"
+    export PATH="$HOME/.local/scripts:$PATH"
+    export VULKAN_PATH="/Users/amer/VulkanSDK/1.4.309.0"
+    export VULKAN_SDK=$VULKAN_PATH/macOS
+    export PATH=$VULKAN_SDK/bin:$PATH
+    export DYLD_LIBRARY_PATH=$VULKAN_SDK/lib:$DYLD_LIBRARY_PATH
+    export VK_ICD_FILENAMES=$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json
+    export VK_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
+fi
 
 bindkey '^j' autosuggest-execute
 bindkey '^ ' autosuggest-accept
+bindkey -s '^H' 'fg\n'
 
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
-
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/source/fzf-git.sh/fzf-git.sh
-
-export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
-export PATH="/opt/homebrew/opt/bison/bin:$PATH"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PATH="$PATH:/Users/amer/.local/bin"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
-export PATH="$HOME/.local/scripts:$PATH"
 
 
-export VULKAN_PATH="/Users/amer/VulkanSDK/1.4.309.0"
-export VULKAN_SDK=$VULKAN_PATH/macOS
-export PATH=$VULKAN_SDK/bin:$PATH
-export DYLD_LIBRARY_PATH=$VULKAN_SDK/lib:$DYLD_LIBRARY_PATH
-export VK_ICD_FILENAMES=$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json
-export VK_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
 
 
 eval "$(fzf --zsh)"
@@ -66,5 +69,3 @@ alias gf="git fetch"
 alias gs="git status"
 
 if [ "$TMUX" = "" ]; then tmux; fi
-
-[ -f "/Users/amer/.ghcup/env" ] && . "/Users/amer/.ghcup/env" # ghcup-env
