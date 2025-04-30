@@ -14,6 +14,7 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH="/opt/homebrew/opt/bison/bin:$PATH"
     export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
     export PATH="$PATH:/Users/amer/.local/bin"
+    export PATH=/Users/amer/.nimble/bin:$PATH
     export PATH="$HOME/.local/scripts:$PATH"
     export VULKAN_PATH="/Users/amer/VulkanSDK/1.4.309.0"
     export VULKAN_SDK=$VULKAN_PATH/macOS

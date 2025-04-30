@@ -8,50 +8,49 @@ return {
                 height = 0.7,
             },
         })
-        local on_attach = function(client, bufnr)
-            if client.supports_method("textDocument/signatureHelp") then
-                local custom_signature = function()
-                    local signature_opts = {
-                        max_width = 80,
-                        max_height = 40,
-                    }
-                    vim.lsp.buf.signature_help(signature_opts)
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+            callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if not client then return end
+                if client.server_capabilities.signatureHelpProvider then
+                    local custom_signature = function()
+                        local signature_opts = {
+                            max_width = 80,
+                            max_height = 40,
+                        }
+                        vim.lsp.buf.signature_help(signature_opts)
+                    end
+                    vim.api.nvim_buf_set_keymap(args.buf, 'i', '<C-h>', '', {
+                        noremap = true,
+                        silent = true,
+                        callback = custom_signature,
+                    })
                 end
-                vim.api.nvim_buf_set_keymap(bufnr, 'i', '<C-h>', '', {
-                    noremap = true,
-                    silent = true,
-                    callback = custom_signature,
-                })
-            end
 
-            if client.supports_method("textDocument/hover") then
-                local custom_hover = function()
-                    local hover_opts = {
-                        max_width = 60,
-                        max_height = 10,
-                    }
-                    vim.lsp.buf.hover(hover_opts)
+                if client.server_capabilities.hoverProvider then
+                    local custom_hover = function()
+                        local hover_opts = {
+                            max_width = 60,
+                            max_height = 10,
+                        }
+                        vim.lsp.buf.hover(hover_opts)
+                    end
+                    vim.api.nvim_buf_set_keymap(args.buf, 'n', 'K', '', {
+                        noremap = true,
+                        silent = true,
+                        callback = custom_hover,
+                    })
                 end
-                vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '', {
-                    noremap = true,
-                    silent = true,
-                    callback = custom_hover,
-                })
-            end
-            vim.keymap.set("n", "gn", function() vim.lsp.buf.rename() end,
-                { silent = true, desc = "LSP Rename" })
-            vim.keymap.set("n", "gC", function() vim.lsp.buf.code_action() end,
-                { silent = true, desc = "LSP Code Actions" })
-            vim.keymap.set("n", "gf", function()
-                vim.lsp.buf.format()
-            end, { silent = true, desc = "LSP Format" })
-        end
-        vim.lsp.config(
-            '*',
-            {
-                on_attach = on_attach,
-            }
-        )
+                vim.keymap.set("n", "gn", function() vim.lsp.buf.rename() end,
+                    { silent = true, desc = "LSP Rename" })
+                vim.keymap.set("n", "gC", function() vim.lsp.buf.code_action() end,
+                    { silent = true, desc = "LSP Code Actions" })
+                vim.keymap.set("n", "gf", function()
+                    vim.lsp.buf.format()
+                end, { silent = true, desc = "LSP Format" })
+            end,
+        })
 
         vim.lsp.enable({
             "luals",
@@ -60,7 +59,9 @@ return {
             "cmake-language-server",
             "gopls",
             "clangd",
-            "rust_analyzer",
+            "nimlsp",
+            "zls",
+            "jdtls",
             "jsonlsp",
             "pylsp",
             "yamlls",
